@@ -1,28 +1,6 @@
-# <%= projectName %>
+## 推荐变更日志编写格式
 
-> 描述用途
-
-## 安裝
-
-```bash
-  yarn add <%= projectDescription %>
-```
-
-## API
-...
-
-## Get Started
-
-```javascript
-import xxx from "<%= projectName %>";
-
-xxx();
-```
-
-## ChangeLog
-
-## 0.0.1 (2020-xx-xx)
-
+建议使用这些动词：
 - Add - when you introduce or expose a new feature, property, class, UI, etc.
 - Remove - when you fully removed something and it can no longer be used.
 - Deprecate - when you plan on removing something, but it is still accessible.
@@ -32,5 +10,5 @@ xxx();
 - Upgrade - when upgrading the version of a dependency.
 - Initial/Beta release of … - when releasing a brand-new feature.
 
-## 作者
-<%= author %>
+## 参考
+- https://rushjs.io/pages/maintainer/add_to_repo/

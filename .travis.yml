@@ -1,51 +1,5 @@
-# https://travis-ci.org/jf3096/test-travis
-
-# 使用 nodejs
 language: node_js
-
-# 版本为 8
 node_js:
-  - "9"
-
-# 使用 yarn 而不是 npm (按照实际情况调整)
-install: yarn
-cache: yarn
-
-git:
-  depth: 1
-
-before_install:
-  - |
-    if [[ $TRAVIS_COMMIT_MESSAGE != "release:"* ]]
-    then
-      echo "commit message 中没有使用 ‘release:’ 开头故终止当前 CI."
-      exit
-    fi
-
-script:
-  - yarn start
-
-branches:
-  only:
-    - gh-pages
-    - /.*/
-  except:
-    - master
-    - template
-    - - /^test-.*$/
-
-jobs:
-  include:
-    - stage: deploy
-      script:
-        - echo "开始执行构建 ..."
-        - npm run build
-        - echo "构建完成"
-      deploy:
-        provider: npm
-        email: "$NPM_EMAIL"
-        api_key: "$NPM_TOKEN"
-        skip_cleanup: true
-        on:
-          all_branches: true
-        edge: true
+  - "node"
+  - "7"
+  - "6"
