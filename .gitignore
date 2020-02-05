@@ -1,0 +1,43 @@
+# Logs
+logs
+*.log
+
+# Dependencies
+node_modules/
+
+# Coverage
+coverage/
+
+# VS Code
+.vscode
+!.vscode/tasks.js
+
+# JetBrains IDEs
+.idea/
+
+# Optional npm cache directory
+.npm
+
+# Optional eslint cache
+.eslintcache
+
+# Misc
+.DS_Store
+
+# Custom
+mochawesome-report/
+.nyc_output/
+dev/
+archive/
+__DOCUMENTS/
+
+# Zip File
+*.zip
+*.7z
+*.rar
+
+# Design
+*.psd
+*.tmp
+.idea/
+.vscode/

@@ -1,0 +1,13 @@
+{
+  "name": "create-webpack-library",
+  "version": "0.0.1",
+  "description": "a template used to create webpack library",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://gitlab.xsjcs.cn/xfe/generator-templates.git"
+  },
+  "author": "Ailun She",
+  "license": "MIT",
+  "dependencies": {}
+}
