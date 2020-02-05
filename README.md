@@ -1,11 +1,11 @@
 # <%= projectName %>
 
-> 描述用途
+> <%= projectDescription %>
 
 ## 安裝
 
 ```bash
-  yarn add <%= projectDescription %>
+  yarn add <%= projectName %>
 ```
 
 ## API
