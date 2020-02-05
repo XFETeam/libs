@@ -1,5 +1,7 @@
 # libs
 
+> library 仓库，一个分支作为一个 library 存在。
+
 ## 使用流程
 
 1. 通过 template 分支 checkout 并进行如组件等工具开发
