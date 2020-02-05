@@ -1,36 +1,26 @@
-# <%= projectName %>
+# @xfe-team/libs-test
 
-> 描述用途
+> 用于测试 libs 仓库的 ci 部署
 
 ## 安裝
 
 ```bash
-  yarn add <%= projectDescription %>
+  yarn add @xfe-team/libs-test
 ```
-
-## API
-...
 
 ## Get Started
 
 ```javascript
-import xxx from "<%= projectName %>";
+import xxx from "@xfe-team/libs-test";
 
 xxx();
 ```
 
 ## ChangeLog
 
-## 0.0.1 (2020-xx-xx)
+## 0.0.1 (2020-02-06)
 
-- Add - when you introduce or expose a new feature, property, class, UI, etc.
-- Remove - when you fully removed something and it can no longer be used.
-- Deprecate - when you plan on removing something, but it is still accessible.
-- Fix an issue with/where… - when you fixed a bug.
-- Improve - when you made an existing thing better.
-- Update - when you refresh something, but don’t necessarily make it better.
-- Upgrade - when upgrading the version of a dependency.
-- Initial/Beta release of … - when releasing a brand-new feature.
+- Initial - 首次部署
 
 ## 作者
-<%= author %>
+She Ailun

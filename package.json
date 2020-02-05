@@ -1,13 +1,12 @@
 {
-  "name": "<%= projectName %>",
+  "name": "@xfe-team/libs-test",
   "version": "0.0.1",
-  "author": "<%= author %>",
-  "description": "<%= projectDescription %>",
-  "main": "lib/<%= projectName %>.min.js",
+  "author": "She Ailun",
+  "description": "用于测试 libs 仓库的 ci 部署",
+  "main": "lib/@xfe-team/libs-test.min.js",
   "scripts": {
     "start": "webpack --progress --colors --watch --env dev",
-    "build": "rimraf lib && webpack --env dev && webpack --env build && bundlesize && git add lib",
-    "bundlesize": "bundlesize",
+    "build": "rimraf lib && webpack --env dev && webpack --env build && git add lib",
     "prepublishOnly": "npm run -s build",
     "test": "mocha --require babel-register --colors ./test/*.spec.js",
     "test:watch": "mocha --require babel-register --colors -w ./test/*.spec.js",
@@ -21,10 +20,10 @@
     "lib"
   ],
   "license": "MIT",
-  "homepage": "<%= repository %>",
+  "homepage": "https://github.com/XFETeam/libs/tree/libs-test",
   "repository": {
     "type": "git",
-    "url": "<%= repository %>"
+    "url": "https://github.com/XFETeam/libs/tree/libs-test"
   },
   "devDependencies": {
     "@babel/cli": "7.0.0-beta.51",
@@ -36,7 +35,6 @@
     "babel-plugin-istanbul": "5.1.0",
     "babel-preset-env": "7.0.0-beta.3",
     "babel-register": "7.0.0-beta.3",
-    "bundlesize": "0.17.0",
     "chai": "4.1.2",
     "cross-env": "5.2.0",
     "eslint": "5.0.1",
@@ -58,11 +56,5 @@
   },
   "publishConfig": {
     "registry": "https://registry.npmjs.org/"
-  },
-  "bundlesize": [
-    {
-      "path": "./lib/**/*.js",
-      "maxSize": "10 kB"
-    }
-  ]
+  }
 }
