@@ -1,11 +1,9 @@
 {
-  "presets": ["env"],
-  "plugins": ["babel-plugin-add-module-exports"],
-  "env": {
-    "test": {
-      "plugins": [
-        ["istanbul"]
-      ]
-    }
-  }
+  "presets": [
+    ["env", {
+      "modules": false
+    }],
+    "stage-0",
+    "react"
+  ]
 }
