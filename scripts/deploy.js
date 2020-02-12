@@ -11,6 +11,7 @@ console.log('start deploying...')
 
 function callback(e) {
   if (e) {
+    console.log('deploy failed !');
     console.err(e);
   } else {
     console.log('deploy succeed !');
