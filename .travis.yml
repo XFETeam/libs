@@ -37,9 +37,9 @@ jobs:
   include:
     - stage: deploy
       script:
-        - echo "开始执行构建 ..."
+        - echo "开始执行部署 ..."
         - npm run deploy
-        - echo "构建完成"
+        - echo "部署完成"
       deploy:
         provider: npm
         email: "$NPM_EMAIL"
