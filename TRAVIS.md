@@ -6,6 +6,7 @@
 2. 在 `Environment Variables` 子目录中配置 <br />
     2.1. NPM_EMAIL 529360897@qq.com (key value 形式配置 npm 部署邮箱) <br />
     2.2. NPM_TOKEN 8bc2f282-*******-12feb0332bce (https://www.npmjs.com/settings/jf3096/tokens/  其中 jf3096 为企业或个人 npm 账号)
+    2.3. GH_TOKEN 8069*******11d6 (https://github.com/settings/tokens 用于 gh-pages 部署)
 
 ## 部署需求
 
