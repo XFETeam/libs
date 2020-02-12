@@ -21,25 +21,25 @@ before_install:
       echo "commit message 中没有使用 ‘release:’ 开头故终止当前 CI."
       exit
     fi
+
 script:
   - yarn start
 
 branches:
   only:
     - /.*/
-  except:
-    #    - master
-    - gh-pages
-    - /^test-.*$/
-    - /^template-.*$/
+  except:
+  #    - master
+  - gh-pages
+  - /^test-.*$/
 
 jobs:
   include:
     - stage: deploy
       script:
-        - echo "开始执行构建 ..."
+        - echo "开始执行部署 ..."
         - npm run deploy
-        - echo "构建完成"
+        - echo "部署完成"
       deploy:
         provider: npm
         email: "$NPM_EMAIL"
