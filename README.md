@@ -86,6 +86,15 @@ Component.propsTypes = {
 };
 ```
 
+## ChangeLog
+## 0.0.3 (2020-02-13)
+
+* fix: 修复 `getSnowyParent` props 设置为 window 时 canvas 宽高为 0 的 bug
+
+## 0.0.1 (2020-02-13)
+
+* feat: init commit
+
 ## 来源
 
 [听说冬天和雪花更配哦: https://imjad.cn/archives/code/sounds-winter-and-snowflakes-are-more-compatible/](https://imjad.cn/archives/code/sounds-winter-and-snowflakes-are-more-compatible/)

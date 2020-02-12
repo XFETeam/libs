@@ -1,6 +1,6 @@
 {
   "name": "@xfe-team/snowy",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "下雪动效",
   "author": "xfe-team",
   "license": "MIT",
@@ -19,7 +19,7 @@
     "start": "rollup -c -w",
     "prepare": "yarn run build",
     "predeploy": "yarn run build && cd example && yarn install && yarn run build",
-    "deploy": "rm -rf node_modules/gh-pages/.cache && gh-pages -d example/build -r https://$GH_TOKEN@github.com/XFETeam/libs.git"
+    "deploy": "gh-pages -d example/build -r https://$GH_TOKEN@github.com/XFETeam/libs.git --remove=@xfe-team/snowy/**/*"
   },
   "peerDependencies": {
     "prop-types": "^15.5.4",

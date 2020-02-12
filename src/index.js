@@ -30,8 +30,8 @@ const Component = ({ getSnowyParent, flakeColor, flakeForceDistance, flakeCount,
 
     function getSnowyWrapperElementSize() {
       return {
-        width: snowyFinalWrapperElement.offsetWidth || snowyFinalWrapperElement.width,
-        height: snowyFinalWrapperElement.offsetHeight || snowyFinalWrapperElement.height
+        width: snowyFinalWrapperElement.offsetWidth || snowyFinalWrapperElement.innerWidth,
+        height: snowyFinalWrapperElement.offsetHeight || snowyFinalWrapperElement.innerHeight
       };
     }
 
@@ -175,7 +175,7 @@ const Component = ({ getSnowyParent, flakeColor, flakeForceDistance, flakeCount,
       document.removeEventListener('touchcancel', onTouchEndOrCancel);
     };
   }, []);
-  return <canvas ref={rootRef} {...restProps} />;
+  return <canvas ref={rootRef} {...restProps} style={{ display: 'block' }} />;
 };
 
 Component.defaultProps = {

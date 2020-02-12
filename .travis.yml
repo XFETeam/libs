@@ -42,7 +42,7 @@ jobs:
         - echo "构建完成"
       deploy:
         provider: npm
-        email: "529360897@qq.com"
+        email: "$NPM_EMAIL"
         api_key: "$NPM_TOKEN"
         skip_cleanup: true
         on:
