@@ -16,7 +16,7 @@ function callback(e) {
 }
 
 ghpages.publish('example/build', {
-  repo: 'git@github.com:XFETeam/libs.git',
+  repo: 'https://github.com/XFETeam/libs',
   remove: `${appName}/**/*`,
   dest: appName
 }, callback);

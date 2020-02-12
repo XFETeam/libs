@@ -6,7 +6,7 @@ export default class App extends Component {
   render() {
     return (
       <div style={{ height: 400 }}>
-        <Snowy getSnowyParent="parent" flakeCount="medium" />
+        <Snowy flakeCount="medium" />
       </div>
     );
   }
