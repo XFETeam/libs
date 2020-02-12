@@ -1,22 +1,8 @@
 import React, { useEffect, useRef } from 'react';
-import { func, string, number, oneOfType, object } from 'prop-types';
+import { func, string, number, oneOfType, object, oneOf } from 'prop-types';
 
 const Component = ({ getSnowyParent, flakeColor, flakeForceDistance, flakeCount, computeFlakeSize, computeFlakeSpeed, computeFlakeOpacity, ...restProps }) => {
   const rootRef = useRef();
-
-  function getSnowyWrapperElementSize() {
-    let snowyWrapperElement = typeof getSnowyParent === 'function' ? getSnowyParent() : getSnowyParent;
-    if (snowyWrapperElement === window || snowyWrapperElement === 'window') {
-      snowyWrapperElement = window;
-    }
-    if (snowyWrapperElement === 'parent') {
-      snowyWrapperElement = rootRef.current.parentNode;
-    }
-    return {
-      width: window.innerWidth || snowyWrapperElement.width,
-      height: window.innerHeight || snowyWrapperElement.height
-    };
-  }
 
   useEffect(() => {
     const flakes = [];
@@ -29,14 +15,52 @@ const Component = ({ getSnowyParent, flakeColor, flakeForceDistance, flakeCount,
     let mX = -100;
     let mY = -100;
 
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
+    const snowyFinalWrapperElement = getSnowyFinalWrapperElement();
+
+    function getSnowyFinalWrapperElement() {
+      let snowyWrapperElement = typeof getSnowyParent === 'function' ? getSnowyParent() : getSnowyParent;
+      if (snowyWrapperElement === window || snowyWrapperElement === 'window') {
+        snowyWrapperElement = window;
+      }
+      if (snowyWrapperElement === 'parent') {
+        snowyWrapperElement = rootRef.current.parentNode;
+      }
+      return snowyWrapperElement;
+    }
+
+    function getSnowyWrapperElementSize() {
+      return {
+        width: snowyFinalWrapperElement.offsetWidth || snowyFinalWrapperElement.width,
+        height: snowyFinalWrapperElement.offsetHeight || snowyFinalWrapperElement.height
+      };
+    }
+
+    function getFinalFlakeCount() {
+      let finalFlakeCount;
+      const area = canvas.width * canvas.height;
+      if (typeof flakeCount === 'function') {
+        finalFlakeCount = flakeCount(area);
+      } else if (flakeCount === 'high') {
+        finalFlakeCount = Math.ceil(area * 0.0005);
+      } else if (flakeCount === 'medium') {
+        finalFlakeCount = Math.ceil(area * 0.00025);
+      } else if (flakeCount === 'low') {
+        finalFlakeCount = Math.ceil(area * 0.000125);
+      } else {
+        finalFlakeCount = flakeCount;
+      }
+      return finalFlakeCount;
+    }
 
     function snow() {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-      for (let i = 0; i < flakeCount; i++) {
+      for (let i = 0, finalFlakeCount = getFinalFlakeCount(); i < finalFlakeCount; i++) {
         const flake = flakes[i];
+
+        if (!flake) {
+          continue;
+        }
+
         const x = mX;
         const y = mY;
         const minDist = flakeForceDistance; // 雪花距离鼠标指针的最小值，小于这个距离的雪花将受到鼠标的排斥
@@ -92,7 +116,7 @@ const Component = ({ getSnowyParent, flakeColor, flakeForceDistance, flakeCount,
     }
 
     function init() {
-      for (let i = 0; i < flakeCount; i++) {
+      for (let i = 0, finalFlakeCount = getFinalFlakeCount(); i < finalFlakeCount; i++) {
         const x = Math.floor(Math.random() * canvas.width);
         const y = Math.floor(Math.random() * canvas.height);
         const size = computeFlakeSize();
@@ -177,9 +201,12 @@ Component.propsTypes = {
   flakeColor: string,
   /**
    * 雪花数目
+   * 当值为 number： 代表无论在什么分辨率都为该数量的雪花
+   * 当值为 func 时： （area）=> number, 参数为面积，即当前雪花容器的面积，可以根据 area/系数 动态算入雪花值
+   * 当值为 string 时， 有效值只可以是 high， low， medium， 这将代表雪花的密集程度将会是 密集（high），一般（medium），稀疏（low），这也是会动态根据当前容器面积动态计算
    * 默认： 200
    */
-  flakeCount: number,
+  flakeCount: oneOfType([func, number, oneOf(['high', 'low', 'medium'])]),
   /**
    * 雪花弹出“用力”距离
    * 在 PC 端时默认情况下为 mousemove 时弹开雪花

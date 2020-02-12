@@ -5,7 +5,9 @@ import Snowy from 'lib'
 export default class App extends Component {
   render() {
     return (
-      <Snowy />
+      <div style={{ height: 400 }}>
+        <Snowy getSnowyParent="parent" flakeCount="medium" />
+      </div>
     );
   }
 }

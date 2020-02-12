@@ -4,6 +4,10 @@
 
 [![NPM](https://img.shields.io/npm/v/@xfe-team/snowy.svg)](https://www.npmjs.com/package/snowy) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 
+## Demo
+
+[https://xfeteam.github.io/libs/@xfe-team/snowy/index.html](https://xfeteam.github.io/libs/@xfe-team/snowy/index.html)
+
 ## Install
 
 ```bash
@@ -51,9 +55,12 @@ Component.propsTypes = {
   flakeColor: string,
   /**
    * 雪花数目
+   * 当值为 number： 代表无论在什么分辨率都为该数量的雪花
+   * 当值为 func 时： （area）=> number, 参数为面积，即当前雪花容器的面积，可以根据 area/系数 动态算入雪花值
+   * 当值为 string 时， 有效值只可以是 high， low， medium， 这将代表雪花的密集程度将会是 密集（high），一般（medium），稀疏（low），这也是会动态根据当前容器面积动态计算
    * 默认： 200
    */
-  flakeCount: number,
+  flakeCount: oneOfType([func, number, oneOf(['high', 'low', 'medium'])]),
   /**
    * 雪花弹出“用力”距离
    * 在 PC 端时默认情况下为 mousemove 时弹开雪花
@@ -78,6 +85,10 @@ Component.propsTypes = {
   computeFlakeOpacity: func
 };
 ```
+
+## 来源
+
+[听说冬天和雪花更配哦: https://imjad.cn/archives/code/sounds-winter-and-snowflakes-are-more-compatible/](https://imjad.cn/archives/code/sounds-winter-and-snowflakes-are-more-compatible/)
 
 ## License
 
