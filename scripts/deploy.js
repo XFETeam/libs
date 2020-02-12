@@ -7,6 +7,8 @@
 const ghpages = require('gh-pages');
 const appName = require('../package.json').name;
 
+console.log('start deploying...')
+
 function callback(e) {
   if (e) {
     console.err(e);
