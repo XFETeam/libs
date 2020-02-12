@@ -12,7 +12,7 @@ console.log('start deploying...')
 function callback(e) {
   if (e) {
     console.log('deploy failed !');
-    console.err(e);
+    console.log(e);
   } else {
     console.log('deploy succeed !');
   }
