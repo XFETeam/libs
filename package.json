@@ -18,8 +18,8 @@
     "build": "rollup -c",
     "start": "rollup -c -w",
     "prepare": "yarn run build",
-    "predeploy": "cd example && yarn install && yarn run build",
-    "deploy": "gh-pages -d example/build --add"
+    "predeploy": "yarn run build && cd example && yarn install && yarn run build",
+    "deploy": "gh-pages -d example/build -r https://$GH_TOKEN@github.com/XFETeam/libs.git -v \"@xfe-team/<%= projectName %>/**/*\""
   },
   "peerDependencies": {
     "prop-types": "^15.5.4",
