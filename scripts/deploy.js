@@ -10,9 +10,9 @@ const appName = require('../package.json').name;
 function callback(e) {
   if (e) {
     console.err(e);
-    return;
+  } else {
+    console.log('deploy succeed !');
   }
-  console.log('deploy succeed !');
 }
 
 ghpages.publish('example/build', {
