@@ -12,7 +12,8 @@
     "test:watch": "mocha --require babel-register --colors -w ./test/*.spec.js",
     "test:cover": "cross-env NODE_ENV=test nyc mocha --require babel-register --colors test/*.js",
     "release": "npm run build && release-it patch",
-    "release:dry-run": "release-it minor --dry-run"
+    "release:dry-run": "release-it minor --dry-run",
+    "deploy": "npm run build"
   },
   "keywords": [
   ],
