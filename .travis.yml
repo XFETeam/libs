@@ -27,10 +27,10 @@ script:
 
 branches:
   only:
-    - gh-pages
     - /.*/
   except:
   #    - master
+  - gh-pages
   - /^test-.*$/
 
 jobs:
