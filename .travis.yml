@@ -38,7 +38,7 @@ jobs:
     - stage: deploy
       script:
         - echo "开始执行构建 ..."
-        - npm run build && npm run deploy
+        - npm run deploy
         - echo "构建完成"
       deploy:
         provider: npm
