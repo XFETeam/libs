@@ -19,7 +19,7 @@
     "start": "rollup -c -w",
     "prepare": "yarn run build",
     "predeploy": "cd example && yarn install && yarn run build",
-    "deploy": "gh-pages -d example/build -e @xfe-team/<%= projectName %> --remove=@xfe-team/<%= projectName %>/ -r https://$GH_TOKEN@github.com/XFETeam/libs.git"
+    "deploy": "gh-pages-clean && gh-pages -d example/build -e @xfe-team/<%= projectName %> --remove=@xfe-team/<%= projectName %>/ -r https://$GH_TOKEN@github.com/XFETeam/libs.git"
   },
   "peerDependencies": {
     "prop-types": "^15.5.4",
