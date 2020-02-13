@@ -42,7 +42,7 @@
     "eslint-plugin-promise": "^4.0.0",
     "eslint-plugin-react": "^7.10.0",
     "eslint-plugin-standard": "^3.1.0",
-    "gh-pages": "https://github.com/jf3096/gh-pages.git#d75da653e02dae7f29a7b31cb9dd8ec5292d7f55",
+    "gh-pages": "https://github.com/jf3096/gh-pages.git#362e7a0bc595dc2534ea45a545ea1db876cf0904",
     "react": "16.9.0",
     "react-dom": "16.9.0",
     "react-scripts": "^1.1.4",
