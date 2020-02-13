@@ -18,8 +18,7 @@
     "build": "rollup -c",
     "start": "rollup -c -w",
     "prepare": "yarn run build",
-    "predeploy": "yarn run build && cd example && yarn install && yarn run build",
-    "deploy": "gh-pages -d example/build -e @xfe-team/snowy1 -v \"@xfe-team/snowy/**/*\" -r https://$GH_TOKEN@github.com/XFETeam/libs.git"
+    "deploy": "gh-pages -d example/build -e @xfe-team/snowy --remove=@xfe-team/snowy/ -r https://$GH_TOKEN@github.com/XFETeam/libs.git"
   },
   "peerDependencies": {
     "prop-types": "^15.5.4",
@@ -43,7 +42,7 @@
     "eslint-plugin-promise": "^4.0.0",
     "eslint-plugin-react": "^7.10.0",
     "eslint-plugin-standard": "^3.1.0",
-    "gh-pages": "^1.2.0",
+    "gh-pages": "https://github.com/jf3096/gh-pages.git#d75da653e02dae7f29a7b31cb9dd8ec5292d7f55",
     "react": "16.9.0",
     "react-dom": "16.9.0",
     "react-scripts": "^1.1.4",
