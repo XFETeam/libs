@@ -18,7 +18,8 @@
     "build": "rollup -c",
     "start": "rollup -c -w",
     "prepare": "yarn run build",
-    "deploy": "gh-pages -d example/build -e @xfe-team/snowy -r https://github.com/XFETeam/libs.git"
+    "predeploy": "yarn run build && cd example && yarn install && yarn run build",
+    "deploy": "gh-pages -d example/build -e @xfe-team/snowy --remove=@xfe-team/snowy/ -r https://github.com/XFETeam/libs.git"
   },
   "peerDependencies": {
     "prop-types": "^15.5.4",
