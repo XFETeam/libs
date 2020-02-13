@@ -95,7 +95,7 @@ Component.propsTypes = {
 
 * feat: init commit
 
-## 来源
+## Reference
 
 [听说冬天和雪花更配哦: https://imjad.cn/archives/code/sounds-winter-and-snowflakes-are-more-compatible/](https://imjad.cn/archives/code/sounds-winter-and-snowflakes-are-more-compatible/)
 
