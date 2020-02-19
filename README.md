@@ -4,6 +4,10 @@
 
 [![NPM](https://img.shields.io/npm/v/@xfe-team/live2d.svg)](https://www.npmjs.com/package/@xfe-team/live2d) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 
+## Demo
+
+[https://xfeteam.github.io/libs/@xfe-team/live2d/index.html](https://xfeteam.github.io/libs/@xfe-team/live2d/index.html)
+
 ## Install
 
 ```bash
