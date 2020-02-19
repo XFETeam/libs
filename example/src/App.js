@@ -3,11 +3,9 @@ import React, { Component } from 'react'
 import ExampleComponent from 'lib'
 
 export default class App extends Component {
-  render () {
+  render() {
     return (
-      <div>
-        <ExampleComponent />
-      </div>
-    )
+      <ExampleComponent width="560" height="500" />
+    );
   }
 }
