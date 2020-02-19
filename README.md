@@ -34,6 +34,9 @@ class Example extends Component {
 ```JavaScript
 ```
 
+## CI 地址
+https://travis-ci.org/XFETeam/libs
+
 ## License
 
 MIT © [xfe-team](https://github.com/xfeteam)
