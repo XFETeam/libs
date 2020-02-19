@@ -16,6 +16,9 @@ npm install --save @xfe-team/live2d
 
 ## Usage
 
+在大部分场景中，只需要配置好 modelJsonUrl 即可完成该工具的调用。 `modelJsonUrl` 为 live2d 模型的配置文件。
+`width` 和 `height` 则用于制定当前 canvas 绘制大小， 建议设置为 live2d 模型大小即可。
+
 ```jsx
 import React from 'react'
 import Live2d from '@xfe-team/live2d'
@@ -32,6 +35,10 @@ class Example extends React.PureComponent {
   }
 }
 ```
+
+## modelJsonUrl 的创建过程
+
+待补充...
 
 ## API
 ```JavaScript
