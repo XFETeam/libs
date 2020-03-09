@@ -1,0 +1,35 @@
+{
+  "tags": {
+    "allowUnknownTags": true,
+    "dictionaries": ["jsdoc"]
+  },
+  "source": {
+    "include": ["src", "package.json", "README.md"],
+    "includePattern": ".js$",
+    "exclude": [
+      "./node_modules",
+      "./docs",
+      "./src/models",
+      "./src/error"
+    ]
+  },
+  "plugins": [
+    "plugins/markdown",
+    "node_modules/jsdoc-escape-at"
+  ],
+  "templates": {
+    "referenceTitle": "My SDK Name",
+    "disableSort": false,
+    "collapse": true,
+    "resources": {
+      "XFETeam": "https://github.com/orgs/XFETeam/dashboard"
+    }
+  },
+  "opts": {
+    "destination": "./docs/",
+    "encoding": "utf8",
+    "private": true,
+    "recurse": true,
+    "template": "./node_modules/braintree-jsdoc-template"
+  }
+}

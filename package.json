@@ -1,30 +1,29 @@
 {
-  "name": "<%= projectName %>",
+  "name": "@xfe-team/utils",
   "version": "0.0.1",
-  "author": "<%= author %>",
-  "description": "<%= projectDescription %>",
-  "main": "lib/<%= projectName %>.min.js",
+  "author": "huangzhe",
+  "description": "工具类集合库",
   "scripts": {
     "start": "webpack --progress --colors --watch --env dev",
-    "build": "rimraf lib && webpack --env dev && webpack --env build && git add lib",
     "prepublishOnly": "npm run -s build",
+    "build": "npm run docs",
     "test": "mocha --require babel-register --colors ./test/*.spec.js",
     "test:watch": "mocha --require babel-register --colors -w ./test/*.spec.js",
     "test:cover": "cross-env NODE_ENV=test nyc mocha --require babel-register --colors test/*.js",
     "release": "npm run build && release-it patch",
     "release:dry-run": "release-it minor --dry-run",
-    "deploy": "npm run build"
+    "deploy": "npm run build",
+    "docs": "jsdoc -c jsdoc.json"
   },
-  "keywords": [
-  ],
+  "keywords": ["utils", "xfe-team"],
   "files": [
-    "lib"
+    "src"
   ],
   "license": "MIT",
-  "homepage": "<%= repository %>",
+  "homepage": "https://github.com/XFETeam/libs/tree/utils",
   "repository": {
     "type": "git",
-    "url": "<%= repository %>"
+    "url": "https://github.com/XFETeam/libs/tree/utils"
   },
   "devDependencies": {
     "@babel/cli": "7.0.0-beta.51",
@@ -36,6 +35,7 @@
     "babel-plugin-istanbul": "5.1.0",
     "babel-preset-env": "7.0.0-beta.3",
     "babel-register": "7.0.0-beta.3",
+    "braintree-jsdoc-template": "3.3.0",
     "chai": "4.1.2",
     "cross-env": "5.2.0",
     "eslint": "5.0.1",
@@ -58,5 +58,26 @@
   "publishConfig": {
     "registry": "https://registry.npmjs.org/",
     "access": "public"
+  },
+  "dependencies": {
+    "@xfe-team/idle-callback": "0.0.3",
+    "@xfe-team/preloadjs-patch": "0.0.1",
+    "@xfe/captcha-handler": "1.2.3",
+    "core-decorators": "0.20.0",
+    "detect-mobile-device": "0.0.4",
+    "invariant": "2.2.4",
+    "js-base64": "2.5.2",
+    "jsdoc-escape-at": "1.0.1",
+    "jsonp-promise": "0.1.2",
+    "load-script2": "2.0.4",
+    "mmlpx": "4.0.2",
+    "mobx-utils": "5.5.4",
+    "qs": "6.9.1",
+    "schema-validator": "3.3.1",
+    "uuid": "7.0.2",
+    "without-props": "1.0.1"
+  },
+  "peerDependencies": {
+    "antd-mobile": "^2.3.1"
   }
 }

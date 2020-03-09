@@ -1,11 +1,11 @@
-# <%= projectName %>
+# utils
 
-> <%= projectDescription %>
+> 工具类集合库
 
 ## 安裝
 
 ```bash
-  yarn add <%= projectName %>
+  yarn add utils
 ```
 
 ## API
@@ -14,7 +14,7 @@
 ## Get Started
 
 ```javascript
-import xxx from "<%= projectName %>";
+import xxx from "utils";
 
 xxx();
 ```
@@ -33,4 +33,4 @@ xxx();
 - Initial/Beta release of … - when releasing a brand-new feature.
 
 ## 作者
-<%= author %>
+huangzhe
