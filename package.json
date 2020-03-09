@@ -62,7 +62,6 @@
   "dependencies": {
     "@xfe-team/idle-callback": "0.0.3",
     "@xfe-team/preloadjs-patch": "0.0.1",
-    "@xfe/captcha-handler": "1.2.3",
     "core-decorators": "0.20.0",
     "detect-mobile-device": "0.0.4",
     "invariant": "2.2.4",
