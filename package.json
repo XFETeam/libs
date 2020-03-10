@@ -14,7 +14,7 @@
     "release:dry-run": "release-it minor --dry-run",
     "deploy": "npm run build && npm run gh-page",
     "docs": "rimraf docs && jsdoc -c jsdoc.json",
-    "gh-page": "gh-pages-clean && gh-pages -d docs/@xfe-team/utils/0.0.2 --remove=@xfe-team/utils/ -r https://$GH_TOKEN@github.com/XFETeam/libs.git"
+    "gh-page": "gh-pages-clean && gh-pages -d docs/ --remove=@xfe-team/utils/ -r https://zheever:zhe062611@github.com/XFETeam/libs.git"
   },
   "keywords": [
     "utils",
