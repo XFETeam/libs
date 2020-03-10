@@ -12,8 +12,9 @@
     "test:cover": "cross-env NODE_ENV=test nyc mocha --require babel-register --colors test/*.js",
     "release": "npm run build && release-it patch",
     "release:dry-run": "release-it minor --dry-run",
-    "deploy": "npm run build",
-    "docs": "jsdoc -c jsdoc.json"
+    "deploy": "npm run build && npm run gh-page",
+    "docs": "rimraf docs && jsdoc -c jsdoc.json",
+    "gh-page": "gh-pages-clean && gh-pages -d docs/@xfe-team/utils/0.0.1 --remove=@xfe-team/utils/ -r https://$GH_TOKEN@github.com/XFETeam/libs.git"
   },
   "keywords": [
     "utils",
@@ -38,9 +39,10 @@
     "babel-plugin-istanbul": "5.1.0",
     "babel-preset-env": "7.0.0-beta.3",
     "babel-register": "7.0.0-beta.3",
-    "braintree-jsdoc-template": "3.3.0",
+    "gh-pages": "https://github.com/jf3096/gh-pages.git#362e7a0bc595dc2534ea45a545ea1db876cf0904",
     "chai": "4.1.2",
     "cross-env": "5.2.0",
+    "docdash": "1.2.0",
     "eslint": "5.0.1",
     "eslint-loader": "2.0.0",
     "jsdoc": "3.6.3",
@@ -66,6 +68,7 @@
   "dependencies": {
     "@xfe-team/idle-callback": "0.0.3",
     "@xfe-team/preloadjs-patch": "0.0.1",
+    "@xfe-team/utils": "0.0.1",
     "core-decorators": "0.20.0",
     "detect-mobile-device": "0.0.4",
     "invariant": "2.2.4",
