@@ -1,12 +1,12 @@
 {
   "name": "@xfe-team/utils",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "author": "huangzhe",
   "description": "工具类集合库",
   "scripts": {
     "start": "webpack --progress --colors --watch --env dev",
     "prepublishOnly": "npm run -s build",
-    "build": "npm run docs",
+    "build": "git add . && npm run docs",
     "test": "mocha --require babel-register --colors ./test/*.spec.js",
     "test:watch": "mocha --require babel-register --colors -w ./test/*.spec.js",
     "test:cover": "cross-env NODE_ENV=test nyc mocha --require babel-register --colors test/*.js",
@@ -14,7 +14,7 @@
     "release:dry-run": "release-it minor --dry-run",
     "deploy": "npm run build && npm run gh-page",
     "docs": "rimraf docs && jsdoc -c jsdoc.json",
-    "gh-page": "gh-pages-clean && gh-pages -d docs/@xfe-team/utils/0.0.1 --remove=@xfe-team/utils/ -r https://$GH_TOKEN@github.com/XFETeam/libs.git"
+    "gh-page": "gh-pages-clean && gh-pages -d docs/@xfe-team/utils/0.0.2 --remove=@xfe-team/utils/ -r https://$GH_TOKEN@github.com/XFETeam/libs.git"
   },
   "keywords": [
     "utils",
