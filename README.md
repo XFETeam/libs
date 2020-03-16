@@ -3,7 +3,7 @@
 > 工具类集合库
 
 #文档地址
-https://xfeteam.github.io/libs/@xfe-team/utils/0.0.3/index.html
+https://xfeteam.github.io/libs/@xfe-team/utils/0.0.4/index.html
 
 ## 安裝
 
