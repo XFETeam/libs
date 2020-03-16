@@ -1,6 +1,6 @@
 {
   "name": "@xfe-team/utils",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "author": "huangzhe",
   "description": "工具类集合库",
   "scripts": {
@@ -14,7 +14,7 @@
     "release:dry-run": "release-it minor --dry-run",
     "deploy": "npm run build && npm run gh-page",
     "docs": "rimraf docs && jsdoc -c jsdoc.json",
-    "gh-page": "gh-pages-clean && gh-pages -d docs/ --remove=@xfe-team/utils/ -r https://zheever:zhe062611@github.com/XFETeam/libs.git"
+    "gh-page": "gh-pages-clean && gh-pages -d docs/ --remove=@xfe-team/utils/ -r https://$GH_TOKEN@github.com/XFETeam/libs.git"
   },
   "keywords": [
     "utils",
@@ -39,12 +39,12 @@
     "babel-plugin-istanbul": "5.1.0",
     "babel-preset-env": "7.0.0-beta.3",
     "babel-register": "7.0.0-beta.3",
-    "gh-pages": "https://github.com/jf3096/gh-pages.git#362e7a0bc595dc2534ea45a545ea1db876cf0904",
     "chai": "4.1.2",
     "cross-env": "5.2.0",
     "docdash": "1.2.0",
     "eslint": "5.0.1",
     "eslint-loader": "2.0.0",
+    "gh-pages": "https://github.com/jf3096/gh-pages.git#362e7a0bc595dc2534ea45a545ea1db876cf0904",
     "jsdoc": "3.6.3",
     "jsdom": "11.11.0",
     "jsdom-global": "3.0.2",
