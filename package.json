@@ -16,6 +16,8 @@
     "deploy": "npm run build"
   },
   "keywords": [
+    "tracker",
+    "xfe-team"
   ],
   "files": [
     "src"
