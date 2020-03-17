@@ -1,4 +1,3 @@
-/* eslint-disable camelcase */
 import StReportSdk from '@xfe/st-report-sdk';
 
 /**
