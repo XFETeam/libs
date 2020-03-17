@@ -1,12 +1,12 @@
 {
-  "name": "<%= projectName %>",
+  "name": "tracker",
   "version": "0.0.1",
-  "author": "<%= author %>",
-  "description": "<%= projectDescription %>",
-  "main": "lib/<%= projectName %>.min.js",
+  "author": "huangzhe",
+  "description": "tool for tracker",
+  "main": "src/index.js",
   "scripts": {
     "start": "webpack --progress --colors --watch --env dev",
-    "build": "rimraf lib && webpack --env dev && webpack --env build && git add lib",
+    "build": "",
     "prepublishOnly": "npm run -s build",
     "test": "mocha --require babel-register --colors ./test/*.spec.js",
     "test:watch": "mocha --require babel-register --colors -w ./test/*.spec.js",
@@ -18,13 +18,13 @@
   "keywords": [
   ],
   "files": [
-    "lib"
+    "src"
   ],
   "license": "MIT",
-  "homepage": "<%= repository %>",
+  "homepage": "https://github.com/XFETeam/libs/tree/tracker",
   "repository": {
     "type": "git",
-    "url": "<%= repository %>"
+    "url": "https://github.com/XFETeam/libs/tree/tracker"
   },
   "devDependencies": {
     "@babel/cli": "7.0.0-beta.51",

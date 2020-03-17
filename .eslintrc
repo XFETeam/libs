@@ -22,13 +22,13 @@
   "parser": "babel-eslint",
 
   "plugins": [
-    
+
   ],
 
   "rules": {
     "block-scoped-var": 2,
     "brace-style": [2, "1tbs", { "allowSingleLine": true }],
-    "camelcase": [2, { "properties": "always" }],
+    "camelcase": [2, { "properties": "never" }],
     "comma-dangle": [2, "never"],
     "comma-spacing": [2, { "before": false, "after": true }],
     "comma-style": [2, "last"],
@@ -51,7 +51,7 @@
     "keyword-spacing": [2, {"before": true, "after": true}],
     "linebreak-style": 0,
     "max-depth": 0,
-    "max-len": [2, 120, 4],
+    "max-len": [2, 180, 4],
     "max-nested-callbacks": 0,
     "max-params": 0,
     "max-statements": 0,
@@ -150,6 +150,7 @@
     "no-void": 0,
     "no-warning-comments": 0,
     "no-with": 2,
+    "object-curly-spacing": ["error", "always"],
     "one-var": 0,
     "operator-assignment": 0,
     "operator-linebreak": [2, "after"],
