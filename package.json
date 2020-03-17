@@ -58,5 +58,8 @@
   "publishConfig": {
     "registry": "https://registry.npmjs.org/",
     "access": "public"
+  },
+  "peerDependencies": {
+    "@xfe/st-report-sdk": "^2.3.1"
   }
 }
