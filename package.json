@@ -1,6 +1,6 @@
 {
   "name": "@xfe-team/tracker",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "author": "huangzhe",
   "description": "tool for tracker",
   "main": "src/index.js",
