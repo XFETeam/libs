@@ -11,7 +11,7 @@ function getTrackerAuthInfo(thirdPartyAuthStore, isPc) {
     return {};
   }
   // noinspection JSUnresolvedVariable
-  const thirdUid = thirdPartyAuthStore.data?.uid_encode;
+  const thirdUid = thirdPartyAuthStore.data ? thirdPartyAuthStore.data.uid_encode : undefined;
   // noinspection JSUnresolvedVariable,SpellCheckingInspection
   const thirdPartyAuthStoreUa = thirdPartyAuthStore.ua;
   // noinspection SpellCheckingInspection
