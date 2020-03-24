@@ -3,9 +3,13 @@ import StReportSdk from '@xfe/st-report-sdk';
 /**
  * 当登录后同时上报登录授权信息
  * @param thirdPartyAuthStore
+ * @param isPc
  * @return {{wechat_uid: undefined, passport_uid: undefined, qq_uid: undefined}}
  */
-function getTrackerAuthInfo(thirdPartyAuthStore) {
+function getTrackerAuthInfo(thirdPartyAuthStore, isPc) {
+  if (isPc) {
+    return {};
+  }
   // noinspection JSUnresolvedVariable
   const thirdUid = thirdPartyAuthStore.data?.uid_encode;
   // noinspection JSUnresolvedVariable,SpellCheckingInspection
@@ -31,15 +35,17 @@ const getDiffRouteTime = StReportSdk.getDiffRouteTime;
  *
  * @param config
  * @param thirdPartyAuthStore
+ * @param isPc
  * @return {{ev_d: any}|{stReportSdk: *, getDiffRouteTime: Function, report: report}}
  */
-export default function getReport(config, thirdPartyAuthStore) {
+export default function getReport(config, thirdPartyAuthStore, isPc) {
   const params = {
     projectIdentifier: config.identify /* 项目标识: 如: jx3, 必须填写！！*/,
     eventTags: config.eventTags /* 必须填写！！专题tags，这个数组需要替换为埋点文档上的 ev_tag, 最后一个 js4_xxxx_20181204 往往是专题标识 */,
     eventGroup: config.eventGroup /* 必须填写！！专题tags，这个数组需要替换为埋点文档上的 ev_tag, 最后一个 js4_xxxx_20181204 往往是专题标识 */,
+    // eslint-disable-next-line camelcase
     beforeReport({ ev_d, ...restProps }) {
-      return { ev_d: Object.assign(ev_d, getTrackerAuthInfo(thirdPartyAuthStore)), ...restProps };
+      return { ev_d: Object.assign(ev_d, getTrackerAuthInfo(thirdPartyAuthStore, isPc)), ...restProps };
     }
   };
 
