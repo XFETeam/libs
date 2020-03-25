@@ -9,10 +9,11 @@ const context = {};
  * 锁定异步请求装饰器
  * 开发者可以通过 lockAsync 装饰器确保在 async 结束过程中不会有二次调用, 即防止一个按钮在"没完成"时被多次点击
  *
+ * @example
  * 使用方式1:
  *
  * class {
- *   @lockAsync()
+ *   \@lockAsync()
  *   async onXXXClick() {
  *     await xxx.getUserInfo()
  *   }
