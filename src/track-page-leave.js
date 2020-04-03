@@ -4,5 +4,7 @@
  * @return {*}
  */
 export default function initTrackPageLeave(stReportSdk) {
-  return stReportSdk.trackPageLeave;
+  return function () {
+    stReportSdk.trackPageLeave();
+  };
 }
