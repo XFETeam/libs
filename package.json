@@ -21,7 +21,8 @@
   "homepage": "https://github.com/XFETeam/libs#readme",
   "devDependencies": {
     "ava": "^3.8.1",
-    "prettier": "^2.0.5"
+    "prettier": "^2.0.5",
+    "typescript": "^3.8.3"
   },
   "main": "lib/index.js",
   "typings": "lib/index.d.ts",
