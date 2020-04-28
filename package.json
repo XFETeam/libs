@@ -1,0 +1,31 @@
+{
+  "name": "http-request-text-parser",
+  "version": "0.0.1",
+  "description": "将 http 请求文本进行简单的解析",
+  "scripts": {
+    "build": "rm -rf lib && tsc",
+    "test": "tsc && ava",
+    "format": "prettier --write 'src/**/*.{ts,tsx}' 'test/**/*.{ts,tsx}'",
+    "prepublish": "npm run build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/XFETeam/libs.git"
+  },
+  "keywords": [],
+  "author": "She Ailun",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/XFETeam/libs/issues"
+  },
+  "homepage": "https://github.com/XFETeam/libs#readme",
+  "devDependencies": {
+    "ava": "^3.8.1",
+    "prettier": "^2.0.5"
+  },
+  "main": "lib/index.js",
+  "typings": "lib/index.d.ts",
+   "files": [
+    "lib/"
+  ],
+}
