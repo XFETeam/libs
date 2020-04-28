@@ -37,6 +37,25 @@ X-Requested-With: com.tencent.mm
 });
 ```
 
+## API
+
+```typescript
+export interface IHeaders {
+    [key: string]: string;
+}
+export interface IParserResult<TData> {
+    data: TData;
+    method: ('Get' | 'Post' | 'HEAD' | 'OPTIONS') | string;
+    url: string;
+    headers: IHeaders;
+}
+/**
+ * 解析函数
+ * @param {string} fiddlerRawString - fiddler 原始请求字符串
+ */
+export default function parser<TData>(fiddlerRawString: string): IParserResult<TData>;
+```
+
 ## TRAVIS CI 地址
 
 https://travis-ci.com/XFETeam/libs
