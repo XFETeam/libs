@@ -4,8 +4,8 @@
   "description": "将 http 请求文本进行简单的解析",
   "scripts": {
     "build": "rm -rf lib && tsc",
-    "test": "tsc && ava",
-    "format": "prettier --write 'src/**/*.{ts,tsx}' 'test/**/*.{ts,tsx}'",
+    "test": "npm run build && ava",
+    "format": "prettier --write 'src/**/*.{ts,tsx}' 'test/**/*.js'",
     "prepublish": "npm run build"
   },
   "repository": {
@@ -25,7 +25,7 @@
   },
   "main": "lib/index.js",
   "typings": "lib/index.d.ts",
-   "files": [
+  "files": [
     "lib/"
   ]
 }
