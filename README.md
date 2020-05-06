@@ -41,19 +41,19 @@ class Example extends Component {
 
 ## Iframe
 
-当组件作为 `iframe` 页面时将发起 postMessage 通知父页面, 目前 postMessage 数据结构共2种, 分别为 `onChange` 和 `onValidChange`:
+当组件作为 `iframe` 页面时将发起 postMessage 通知父页面, 目前 postMessage 数据结构共2种, 分别为 `onChange` 和 `onValidJsonChange`:
 
 ```json
 {
   "namespace": "@xfe-team/json-monaco-editor",
   "event": "onChange",
-  "data": "{ \"code\": \"1231\" }"
+  "code": "{ \"name\": \"test\" }"
 }
 
 {
   "namespace": "@xfe-team/json-monaco-editor",
-  "event": "onValidChange",
-  "data": "{ \"code\": \"1231\" }"
+  "event": "onValidJsonChange",
+  "code": "{ \"name\": \"test\" }"
 }
 ```
 
@@ -65,6 +65,18 @@ class Example extends Component {
 事件:
   onChange: 当任意输入时回调
   onValidChange: 当输入时候且输入的为合法 JSON 时回调
+
+#### 父页面基本用法
+
+```JavaScript
+  window.addEventListener('message', (e) => {
+      const { data } = e;
+      if (data && data.namespace === '@xfe-team/json-monaco-editor' && data.event === 'onChange') {
+          const { code } = data;
+          console.log({ code });
+      }
+  });
+```
 
 
 # 快捷键

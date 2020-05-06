@@ -15,7 +15,7 @@ const JsonMonacoEditor = ({ onChange, code, reloadInitialCode }) => {
   const handleChange = (newCode) => {
     if(api) {
        api.onChange(newCode);
-       api.onValidJsonSave(newCode);
+       api.onValidJsonChange(newCode);
      }
      onChange && onChange(newCode);
   };

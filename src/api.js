@@ -6,7 +6,7 @@ export default class ParentWindowEmitter {
       window.parent.postMessage({
         namespace: '@xfe-team/json-monaco-editor',
         event: name,
-        data
+        code: data
       }, '*');
     }
   }
@@ -29,7 +29,7 @@ export default class ParentWindowEmitter {
   onValidJsonChange(newCode) {
     const isJsonValid = this._isJsonValid(newCode);
     if (isJsonValid) {
-      this.postMessage('onValidJsonSave', newCode);
+      this.postMessage('onValidJsonChange', newCode);
     }
   }
 }
