@@ -1,6 +1,6 @@
 {
   "name": "@xfe-team/json-monaco-editor",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "json 在线编辑工具, 通过 iframe 进行外部通信",
   "author": "xfe-team",
   "license": "MIT",
@@ -17,7 +17,7 @@
     "start": "npm run build",
     "prepare": "yarn run build",
     "predeploy": "cd example && yarn install && yarn run build",
-    "deploy": "gh-pages-clean && gh-pages -d example/build --remove=@xfe-team/json-monaco-editor/ -r https://$GH_TOKEN@github.com/XFETeam/libs.git"
+    "deploy": "gh-pages-clean && gh-pages -d example/build -e @xfe-team/<%= projectName %> --remove=@xfe-team/<%= projectName %>/ -r https://$GH_TOKEN@github.com/XFETeam/libs.git"
   },
   "peerDependencies": {
     "prop-types": "^15.5.4",
