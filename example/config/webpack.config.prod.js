@@ -122,14 +122,11 @@ module.exports = {
             options: {
               formatter: eslintFormatter,
               eslintPath: require.resolve('eslint'),
-
             },
             loader: require.resolve('eslint-loader'),
           },
         ],
-        include: [
-          paths.appSrc,
-        ],
+        include: paths.appSrc
       },
       {
         // "oneOf" will traverse all following loaders until one will
