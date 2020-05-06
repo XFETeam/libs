@@ -31,13 +31,13 @@ class Example extends Component {
 ```
 
 ## API
-```JavaScript
+
 | 参数      | 说明                       | 类型                                    | 默认值 | 必填 |
 | --------- | -------------------------- | --------------------------------------- | ------ | ---- |
 | onChange | 当代码变更时回调 | (code: string) => void                                 | -      | 是   |
-| code  | 代码 | string      | 是   |
-| reloadInitialCode  | 重置代码, 当触发快捷键 \(重置初始化代码\) 时回调 | () => void      | 否   |
-```
+| code  | 代码 | string      |  -   | 是   |
+| reloadInitialCode  | 重置代码, 当触发快捷键 \(重置初始化代码\) 时回调 | () => void      | -   | 否   |
+
 
 ## Iframe
 
