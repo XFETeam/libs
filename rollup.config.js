@@ -5,6 +5,7 @@ import postcss from 'rollup-plugin-postcss';
 import resolve from 'rollup-plugin-node-resolve';
 import url from 'rollup-plugin-url';
 import svgr from '@svgr/rollup';
+import json from '@rollup/plugin-json';
 
 import pkg from './package.json';
 
@@ -15,14 +16,10 @@ export default {
       file: pkg.main,
       format: 'cjs',
       sourcemap: true
-    },
-    {
-      file: pkg.module,
-      format: 'es',
-      sourcemap: true
     }
   ],
   plugins: [
+    json(),
     external(),
     postcss({
       modules: true

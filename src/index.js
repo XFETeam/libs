@@ -1,14 +1,3 @@
-import React, { useEffect } from 'react';
+import JsonMonacoEditor from './json-monaco-editor';
 
-const Component = ({ children, ...restProps }) => {
-  useEffect(() => {
-    // did mount
-  }, []);
-  return <div {...restProps}>{children}</div>;
-};
-
-Component.defaultProps = {};
-
-Component.propsTypes = {};
-
-export default React.memo(Component);
+export default JsonMonacoEditor;
