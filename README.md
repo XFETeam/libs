@@ -2,16 +2,16 @@
 
 > json 在线编辑工具, 通过 iframe 进行外部通信, 当前工具主要解决内部系统对 monaco-editor 打包缓慢的问题
 
-[![NPM](https://img.shields.io/npm/v/@xfe-team/@xfe-team/json-monaco-editor.svg)](https://www.npmjs.com/package/@xfe-team/@xfe-team/json-monaco-editor) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
+[![NPM](https://img.shields.io/npm/v/@xfe-team/json-monaco-editor.svg)](https://www.npmjs.com/package/@xfe-team/json-monaco-editor) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 
 ## Demo
 
-[https://xfeteam.github.io/libs/@xfe-team/@xfe-team/json-monaco-editor/index.html](https://xfeteam.github.io/libs/@xfe-team/@xfe-team/json-monaco-editor/index.html)
+[https://xfeteam.github.io/libs/@xfe-team/json-monaco-editor/index.html](https://xfeteam.github.io/libs/@xfe-team/json-monaco-editor/index.html)
 
 ## Install
 
 ```bash
-npm install --save @xfe-team/@xfe-team/json-monaco-editor
+npm install --save @xfe-team/json-monaco-editor
 ```
 
 ## Usage
