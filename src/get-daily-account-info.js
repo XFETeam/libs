@@ -70,7 +70,7 @@
       createAuthSuccess(response.data, false);
     } else {
       if (response.code === -14702 /*登录态失效，请重新登录*/) {
-        window.location.href = 'https:/ /jx3.seasungame.com/error-pages/index.html?login-expired';
+        window.location.href = 'https://jx3.seasungame.com/error-pages/index.html?login-expired';
         throw new Error('DAILY_APP_AUTH 登录态失效，请重新登录: ' + JSON.stringify(response));
       }
       var errorObject = createAuthError(response, false);
