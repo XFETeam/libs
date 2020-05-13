@@ -1,6 +1,6 @@
 {
   "name": "@xfe-team/utils",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "author": "huangzhe",
   "description": "工具类集合库",
   "scripts": {
@@ -72,6 +72,7 @@
     "core-decorators": "0.20.0",
     "detect-mobile-device": "0.0.4",
     "invariant": "2.2.4",
+    "is-promise": "4.0.0",
     "js-base64": "2.5.2",
     "jsdoc-escape-at": "1.0.1",
     "jsonp-promise": "0.1.2",
