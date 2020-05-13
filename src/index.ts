@@ -1,50 +1,81 @@
-export interface IHeaders {
-  [key: string]: string;
+import axios from "axios";
+import parser from "@xfe-team/http-request-text-parser";
+import dayjs from "./dayjs";
+
+export interface IRobot {
+  api: string;
+  prefixWithTime?: boolean;
 }
 
-export interface IParserResult<TData> {
-  data: TData;
-  method: ("Get" | "Post" | "HEAD" | "OPTIONS") | string;
-  url: string;
-  headers: IHeaders;
+export interface IQuickHttpJob {
+  start: Function;
+  report: Function;
 }
 
-/**
- * 解析函数
- * @param {string} fiddlerRawString - fiddler 原始请求字符串
- */
-export default function parser<TData>(
-  fiddlerRawString: string
-): IParserResult<TData> {
-  const splits = fiddlerRawString.split(/\n/);
-  const requestUrlMethodInfo = splits[0];
-  const requestUrlMethodInfoSplits = requestUrlMethodInfo.split(" ");
-  const requestMethod = requestUrlMethodInfoSplits[0];
-  const requestUrl = requestUrlMethodInfoSplits[1];
-  const headerRows = splits.slice(1, splits.length);
+export interface IQuickHttpJobConstructorParams {
+  robot?: IRobot;
+  reportWhenStartSuccess?: boolean;
+  reportWhenStartFail?: boolean;
+}
 
-  const { headers, body } = (function () {
-    let bodyIndex = -1;
-    let bodyString = "";
-    const headers = headerRows.reduce((result, row, index) => {
-      row = row.trim();
-      if (row.length === 0) {
-        bodyIndex = index;
-        return result;
-      }
-      if (bodyIndex > -1) {
-        bodyString = bodyString + row;
-        return result;
-      } else {
-        const splitIndex = row.indexOf(":");
-        result[row.substring(0, splitIndex).trim()] = row
-          .substring(splitIndex + 1)
-          .trim();
-        return result;
-      }
-    }, {});
+export default class QuickHttpJob implements IQuickHttpJob {
+  private readonly robot?: IRobot;
+  private readonly reportWhenStartSuccess: boolean;
+  private readonly reportWhenStartFail: boolean;
 
-    return { headers, body: bodyString ? JSON.parse(bodyString) : undefined };
-  })();
-  return { data: body, method: requestMethod, url: requestUrl, headers };
+  public constructor(
+    {
+      robot,
+      reportWhenStartSuccess = true,
+      reportWhenStartFail,
+    } = {} as IQuickHttpJobConstructorParams
+  ) {
+    this.robot = robot;
+    this.reportWhenStartSuccess = reportWhenStartSuccess;
+    this.reportWhenStartFail = reportWhenStartFail;
+  }
+
+  /**
+   * 上报或提醒
+   */
+  public async report(message: string): Promise<any> {
+    const { robot } = this;
+    if (robot) {
+      const { api, prefixWithTime = true } = robot;
+      let content = "";
+      if (prefixWithTime) {
+        content += dayjs().format("YYYY-MM-DD hh:mm:ss") + "\n" + message;
+      }
+      return await axios.post(api, {
+        msgtype: "text",
+        text: {
+          content,
+        },
+      });
+    }
+    return null;
+  }
+
+  /**
+   * 启动
+   */
+  public async start(fiddlerRawText: string) {
+    const fiddlerParams = parser(fiddlerRawText);
+    const { url, data, method, headers } = fiddlerParams;
+    console.log(method.toLowerCase());
+    const response = await axios[method.toLowerCase()](url, data, {
+      headers,
+    }).catch((err) => {
+      if (err && err.message) {
+        if (this.reportWhenStartFail) {
+          this.report(JSON.stringify(response.message));
+        }
+      }
+      throw err;
+    });
+    if (this.reportWhenStartSuccess) {
+      await this.report(JSON.stringify(response.data, null, 2));
+    }
+    return response;
+  }
 }

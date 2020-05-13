@@ -1,11 +1,11 @@
 {
-  "name": "@xfe-team/http-request-text-parser",
+  "name": "@xfe-team/quick-http-job",
   "version": "0.0.1",
-  "description": "将 http 请求文本进行简单的解析",
+  "description": "基于 fiddler 快速 http 工作任务, 主要用于定时任务的基础工具库",
   "scripts": {
     "build": "rm -rf lib && tsc",
     "test": "npm run build && ava",
-    "format": "prettier --write 'src/**/*.{ts,tsx}' 'test/**/*.js'",
+    "format": "prettier --write 'src/**/*.{ts,tsx}'",
     "prepublish": "npm run build"
   },
   "repository": {
@@ -20,7 +20,7 @@
   },
   "homepage": "https://github.com/XFETeam/libs#readme",
   "devDependencies": {
-    "ava": "^3.8.1",
+    "ava": "^3.8.2",
     "prettier": "^2.0.5",
     "typescript": "^3.8.3"
   },
@@ -32,5 +32,10 @@
   "publishConfig": {
     "registry": "https://registry.npmjs.org/",
     "access": "public"
+  },
+  "dependencies": {
+    "@xfe-team/http-request-text-parser": "^0.0.1",
+    "axios": "^0.19.2",
+    "dayjs": "^1.8.26"
   }
 }

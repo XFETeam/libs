@@ -1,18 +1,12 @@
-# @xfe-team/quick-http-job
-
-> 基于 fiddler 快速 http 工作任务, 主要用于定时任务的基础工具库.
-
-## 使用
-
-```js
 const test = require("ava");
-const QuickHttpJob = require('./').default;
+const QuickHttpJob = require("./").default;
 
 test("基本测试, 确保能够完成基本解析", async (t) => {
   const job = new QuickHttpJob({
     robot: {
-      api: 'https://qyapi.weixin.qq.com/cgi-bin/webhook/send?key=24d3395a-9c3b-44b8-9866-9b3a913edbc9',
-    }
+      api:
+        "https://qyapi.weixin.qq.com/cgi-bin/webhook/send?key=24d3395a-9c3b-44b8-9866-9b3a913edbc9",
+    },
   });
   const result = await job.start(
     `POST https://zhweb.kingsoft.com/ncov/health_report/submitDailyState HTTP/1.1
@@ -32,46 +26,5 @@ X-Requested-With: com.tencent.mm
 {"id":0,"lastReportInfo":"珠海/在家/无14天接触史/无异常","workType":"园区办公楼","workTypeOther":"","workTypeDetail":"在家","healthStateList":["无异常"],"backLocation":1,"fromProvince":"","fromCity":"","fromDistrict":"","fromLocation":"","currentProvince":"","currentCity":"","currentDistrict":"","currentLocation":"","backLocationDate":"","touch14":0,"report":false}
 `
   );
-  t.is(typeof result.data === 'object', true);
+  t.is(typeof result.data === "object", true);
 });
-
-```
-
-## API
-
-```typescript
-export interface IRobot {
-    api: string;
-    prefixWithTime?: boolean;
-}
-export interface IQuickHttpJob {
-    start: Function;
-    report: Function;
-}
-export interface IQuickHttpJobConstructorParams {
-    robot?: IRobot;
-    reportWhenStartSuccess?: boolean;
-    reportWhenStartFail?: boolean;
-}
-export default class QuickHttpJob implements IQuickHttpJob {
-    private readonly robot?;
-    private readonly reportWhenStartSuccess;
-    private readonly reportWhenStartFail;
-    constructor({ robot, reportWhenStartSuccess, reportWhenStartFail }?: IQuickHttpJobConstructorParams);
-    /**
-     * 上报或提醒
-     */
-    report(message: string): Promise<any>;
-    /**
-     * 启动
-     */
-    start(fiddlerRawText: string): Promise<any>;
-}
-```
-
-## TRAVIS CI 地址
-
-https://travis-ci.com/XFETeam/libs
-
-## 作者
-She Ailun
