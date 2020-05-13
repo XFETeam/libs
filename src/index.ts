@@ -62,7 +62,6 @@ export default class QuickHttpJob implements IQuickHttpJob {
   public async start(fiddlerRawText: string) {
     const fiddlerParams = parser(fiddlerRawText);
     const { url, data, method, headers } = fiddlerParams;
-    console.log(method.toLowerCase());
     const response = await axios[method.toLowerCase()](url, data, {
       headers,
     }).catch((err) => {

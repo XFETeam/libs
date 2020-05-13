@@ -1,6 +1,6 @@
 {
   "name": "@xfe-team/quick-http-job",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "基于 fiddler 快速 http 工作任务, 主要用于定时任务的基础工具库",
   "scripts": {
     "build": "rm -rf lib && tsc",

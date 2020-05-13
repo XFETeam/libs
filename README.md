@@ -73,5 +73,15 @@ export default class QuickHttpJob implements IQuickHttpJob {
 
 https://travis-ci.com/XFETeam/libs
 
+## ChangeLog
+
+## 0.0.2 (2020-05-13)
+
+* fix: remove debug console log
+
+## 0.0.1 (2020-05-13)
+
+* init: init commit
+
 ## 作者
 She Ailun
