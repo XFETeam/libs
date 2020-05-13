@@ -1,5 +1,6 @@
 /** @module func-deco-util */
 import { isPromise } from './type-utils';
+import { isOKErrorCode } from './error/create-error-code';
 
 /**
  * 装饰器辅助方法
@@ -83,17 +84,25 @@ export function async(param) {
     param = { before: param };
   }
   const { before, after } = param;
-  return (Clazz, name, descriptor) => {
-    const rawFunc = descriptor.value;
-    descriptor.value = async function() {
+  return (ClazzOrFunc, name, descriptor) => {
+    const isDecorator = typeof ClazzOrFunc !== 'function';
+    const rawFunc = isDecorator ? descriptor.value : ClazzOrFunc;
+    const newFunc = async function() {
       /**
        * 执行前执行装饰器 before 钩子函数
        */
       let beforeResult = before && before.apply(this, arguments);
-      /**
-       * 如果 beforeResult 函数返回 promise, 代表其实异步函数, 使用await获取异步结果
-       */
-      isPromise(beforeResult) && (beforeResult = await beforeResult);
+      try {
+        /**
+         * 如果 beforeResult 函数返回 promise, 代表其实异步函数, 使用await获取异步结果
+         */
+        isPromise(beforeResult) && (beforeResult = await beforeResult);
+      } catch (error) {
+        if (error && isOKErrorCode(error.code)) {
+          return;
+        }
+        throw error;
+      }
       /**
        * 判断结果是不是 undefined,
        * 是, 直接使用之前的 arguments
@@ -107,7 +116,7 @@ export function async(param) {
       /**
        * 执行被装饰函数
        */
-      const result = rawFunc.apply(this, beforeResult);
+      let result = rawFunc.apply(this, beforeResult);
       /**
        * 将结果交给 after result 进行再次加工
        */
@@ -120,5 +129,11 @@ export function async(param) {
       afterResult === undefined && (afterResult = result);
       return afterResult;
     };
+
+    if (isDecorator) {
+      descriptor.value = newFunc;
+    } else {
+      return newFunc();
+    }
   };
 }
