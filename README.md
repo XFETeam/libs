@@ -11,7 +11,7 @@ const QuickHttpJob = require('./').default;
 test("基本测试, 确保能够完成基本解析", async (t) => {
   const job = new QuickHttpJob({
     robot: {
-      api: 'https://qyapi.weixin.qq.com/cgi-bin/webhook/send?key=24d3395a-9c3b-44b8-9866-9b3a913edbc9',
+      api: 'https://qyapi.weixin.qq.com/cgi-bin/webhook/send?key=xxx-xxx-xxx',
     }
   });
   const result = await job.start(
