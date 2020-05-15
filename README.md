@@ -37,8 +37,13 @@ console.log(window.THIRD_PARTY_AUTH);
 }
 ```
 
+## API
+1. window.LIMIT_ONLY_HAS_JX3_ROLE_ACCESS_IN_DAILY 在接入脚本设置该值，是否限制仅拥有剑三角色账户才可进入，否则跳转无激活角色错误提示页面
+
 ## ChangeLog
 
-## 0.0.1
+### 0.0.1
 * add: init
 
+### 0.0.2
+* add: 增加window.LIMIT_ONLY_HAS_JX3_ROLE_ACCESS_IN_DAILY是否限制仅拥有剑三角色账户才可进入，否则跳转无激活角色错误提示页面
