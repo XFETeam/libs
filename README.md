@@ -38,12 +38,29 @@ console.log(window.THIRD_PARTY_AUTH);
 ```
 
 ## API
-1. window.LIMIT_ONLY_HAS_JX3_ROLE_ACCESS_IN_DAILY 在接入脚本设置该值，是否限制仅拥有剑三角色账户才可进入，否则跳转无激活角色错误提示页面
+1. window.LIMIT_ONLY_HAS_JX3_ROLE_ACCESS_IN_DAILY
+ 
+ 在接入脚本前设置该值，是否限制仅拥有剑三角色账户才可进入，否则跳转无激活角色错误提示页面，默认关闭，开启会影响性能，请经确认需要开启后开启
+```html
+<head>
+ ...
+   <script>
+        window.LIMIT_ONLY_HAS_JX3_ROLE_ACCESS_IN_DAILY = true;
+   </script>
+   <script src="//zhcdn01.xoyo.com/xassets/lib/daily-app-auth/{VERSION}/daily-app-auth.js" crossOrigin="anonymous" ></script>
+   <script src="//zhcdn01.xoyo.com/xassets/lib/daily-app-auth/{VERSION}/get-daily-account-info.js" crossOrigin="anonymous" ></script>
+ ...
+</head>
+```
+如果设置为window.LIMIT_ONLY_HAS_JX3_ROLE_ACCESS_IN_DAILY为true会多返回红框内数据
+
+![daily auth return](./docs/images/auth-success-return.png)
 
 ## ChangeLog
+
+### 0.0.2
+* add: 增加window.LIMIT_ONLY_HAS_JX3_ROLE_ACCESS_IN_DAILY是否限制仅拥有剑三角色账户才可进入，否则跳转无激活角色错误提示页面
 
 ### 0.0.1
 * add: init
 
-### 0.0.2
-* add: 增加window.LIMIT_ONLY_HAS_JX3_ROLE_ACCESS_IN_DAILY是否限制仅拥有剑三角色账户才可进入，否则跳转无激活角色错误提示页面
