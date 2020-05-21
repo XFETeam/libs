@@ -66,7 +66,7 @@ export default class PostMessage {
 
     const listener = (e) => {
       const origin = e.origin || e.originalEvent.origin;
-      const { data } = e.data;
+      const { data } = e;
 
       if (origin !== targetOrigin && data && data.event === event && data.uid === uid && namespace === this.namespace) {
         clearTimeout(timeoutHook);
