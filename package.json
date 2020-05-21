@@ -1,16 +1,13 @@
 {
-  "name": "<%= projectName %>",
+  "name": "@xfe-team/post-message",
   "version": "0.0.1",
-  "author": "<%= author %>",
-  "description": "<%= projectDescription %>",
-  "main": "lib/<%= projectName %>.min.js",
+  "author": "She Ailun",
+  "description": "iframe post message 协议约定库",
+  "main": "lib/@xfe-team/post-message.min.js",
   "scripts": {
     "start": "webpack --progress --colors --watch --env dev",
     "build": "rimraf lib && webpack --env dev && webpack --env build && git add lib",
     "prepublishOnly": "npm run -s build",
-    "test": "mocha --require babel-register --colors ./test/*.spec.js",
-    "test:watch": "mocha --require babel-register --colors -w ./test/*.spec.js",
-    "test:cover": "cross-env NODE_ENV=test nyc mocha --require babel-register --colors test/*.js",
     "release": "npm run build && release-it patch",
     "release:dry-run": "release-it minor --dry-run",
     "deploy": "npm run build"
