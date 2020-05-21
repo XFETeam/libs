@@ -2,21 +2,25 @@ import ReactMonacoEditor from 'react-monaco-editor';
 import React from 'react';
 import useWindowSize from './use-window-size';
 import ParentWindowEmitter from './api';
+import { useEffect, useState } from 'react';
 
-const JsonMonacoEditor = ({ onChange, code, reloadInitialCode }) => {
+const JsonMonacoEditor = ({ onChange, options, reloadInitialCode, uid, ...restProps }) => {
   let editor;
   let api;
 
-  const options = {
-    selectOnLineNumbers: true
-  };
+  const [stateProps, setStateProps] = useState(null);
+
+  // options = {
+  //   selectOnLineNumbers: true,
+  //   ...options
+  // };
 
   const handleChange = (newCode) => {
-    if(api) {
-       api.onChange(newCode);
-       api.onValidJsonChange(newCode);
-     }
-     onChange && onChange(newCode);
+    if (api) {
+      api.onChange(newCode);
+      api.onValidJsonChange(newCode);
+    }
+    onChange && onChange(newCode);
   };
 
   useWindowSize({
@@ -25,8 +29,12 @@ const JsonMonacoEditor = ({ onChange, code, reloadInitialCode }) => {
     },
   });
 
-  React.useEffect(()=> {
-    api = new ParentWindowEmitter();
+  useEffect(() => {
+    api = new ParentWindowEmitter({ uid });
+    api.onLoad();
+    return api.addOnLoadReceivedListener((data) => {
+      setStateProps(data);
+    });
   }, []);
 
   const editorDidMount = (
@@ -59,13 +67,18 @@ const JsonMonacoEditor = ({ onChange, code, reloadInitialCode }) => {
       },
     });
   };
+
+  if (!stateProps) {
+    return null;
+  }
+
   return (
     <ReactMonacoEditor
-      height="600"
-      language="json"
+      height="700"
       theme="vs"
-      value={code}
-      options={options}
+      language="json"
+      {...restProps}
+      {...stateProps}
       onChange={handleChange}
       editorDidMount={editorDidMount}
     />

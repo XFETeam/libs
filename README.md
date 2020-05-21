@@ -32,11 +32,104 @@ class Example extends Component {
 
 ## API
 
+```ts
+// 组件方法签名
+const JsonMonacoEditor = ({ onChange, code, reloadInitialCode, options, ...restProps }) => React.Node;
+```
+
 | 参数      | 说明                       | 类型                                    | 默认值 | 必填 |
 | --------- | -------------------------- | --------------------------------------- | ------ | ---- |
 | onChange | 当代码变更时回调 | (code: string) => void                                 | -      | 是   |
 | code  | 代码 | string      |  -   | 是   |
 | reloadInitialCode  | 重置代码, 当触发快捷键 \(重置初始化代码\) 时回调 | () => void      | -   | 否   |
+| height  | 高度 | number \| string | 700   | 否   |
+| theme  | 主题 | 'vs'\|'vs-dark' | 'vs'   | 否   |
+| language  | 语言 | 'json' | 'vs'   | 否   |
+
+其中, `restProps` 将代理给 [react-monaco-editor](https://github.com/react-monaco-editor/react-monaco-editor) 组件.
+
+需注意以下固定值, 如字段 `value`, `options`, `onChange`, `editorDidMount` 将不提供修改, 这是因为内部以使用该字段并进行一些内部逻辑处理:
+
+```jsx
+<ReactMonacoEditor
+  height="700"
+  theme="vs"
+  language="json"
+  {...restProps}
+  value={code}
+  options={options}
+  onChange={handleChange}
+  editorDidMount={editorDidMount}
+/>
+```
+
+### 支持语言
+
+```javascript
+const languages = [
+  'abap',
+  'apex',
+  'azcli',
+  'bat',
+  'cameligo',
+  'clojure',
+  'coffee',
+  'cpp',
+  'csharp',
+  'csp',
+  'css',
+  'dockerfile',
+  'fsharp',
+  'go',
+  'graphql',
+  'handlebars',
+  'html',
+  'ini',
+  'java',
+  'javascript',
+  'json',
+  'kotlin',
+  'less',
+  'lua',
+  'markdown',
+  'mips',
+  'msdax',
+  'mysql',
+  'objective-c',
+  'pascal',
+  'pascaligo',
+  'perl',
+  'pgsql',
+  'php',
+  'postiats',
+  'powerquery',
+  'powershell',
+  'pug',
+  'python',
+  'r',
+  'razor',
+  'redis',
+  'redshift',
+  'restructuredtext',
+  'ruby',
+  'rust',
+  'sb',
+  'scheme',
+  'scss',
+  'shell',
+  'solidity',
+  'sophia',
+  'sql',
+  'st',
+  'swift',
+  'tcl',
+  'twig',
+  'typescript',
+  'vb',
+  'xml',
+  'yaml'
+]
+```
 
 
 ## Iframe
@@ -47,13 +140,15 @@ class Example extends Component {
 {
   "namespace": "@xfe-team/json-monaco-editor",
   "event": "onChange",
-  "code": "{ \"name\": \"test\" }"
+  "code": "{ \"name\": \"test\" }",
+  "uid": "a941816c-7f89-443c-a178-5be32e6835c3"
 }
 
 {
   "namespace": "@xfe-team/json-monaco-editor",
   "event": "onValidJsonChange",
-  "code": "{ \"name\": \"test\" }"
+  "code": "{ \"name\": \"test\" }",
+  "uid": "a941816c-7f89-443c-a178-5be32e6835c3"
 }
 ```
 
@@ -61,6 +156,7 @@ class Example extends Component {
   namespace: 命名空间
   event: 事件名称
   data: 事件数据
+  uid: 事件 id, 用于区分多个 Iframe 同一类型事件
 
 事件:
   onChange: 当任意输入时回调
@@ -71,13 +167,12 @@ class Example extends Component {
 ```JavaScript
   window.addEventListener('message', (e) => {
       const { data } = e;
-      if (data && data.namespace === '@xfe-team/json-monaco-editor' && data.event === 'onChange') {
+      if (data && data.namespace === '@xfe-team/json-monaco-editor' && data.event === 'onChange' && data.uid === 'a941816c-7f89-443c-a178-5be32e6835c3') {
           const { code } = data;
           console.log({ code });
       }
   });
 ```
-
 
 # 快捷键
 

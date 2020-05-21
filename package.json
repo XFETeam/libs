@@ -1,6 +1,6 @@
 {
   "name": "@xfe-team/json-monaco-editor",
-  "version": "0.0.4",
+  "version": "0.0.4-beta",
   "description": "json 在线编辑工具, 通过 iframe 进行外部通信",
   "author": "xfe-team",
   "license": "MIT",
@@ -62,7 +62,6 @@
   },
   "dependencies": {
     "@umijs/hooks": "^1.9.2",
-    "qs": "^6.9.4",
     "react-monaco-editor": "^0.36.0"
   }
 }
