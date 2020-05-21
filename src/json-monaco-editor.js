@@ -1,6 +1,5 @@
 import ReactMonacoEditor from 'react-monaco-editor';
 import React from 'react';
-import getProvideCompletionItems from './get-provide-completion-items';
 import useWindowSize from './use-window-size';
 import ParentWindowEmitter from './api';
 
@@ -36,14 +35,6 @@ const JsonMonacoEditor = ({ onChange, code, reloadInitialCode }) => {
   ) => {
     editor = _editor;
     editor.focus();
-    /**
-     * 详细请参考:
-     * https://github.com/microsoft/monaco-editor/issues/1768
-     * https://microsoft.github.io/monaco-editor/playground.html#extending-language-services-completion-provider-example
-     */
-    monaco.languages.registerCompletionItemProvider('json', {
-      provideCompletionItems: getProvideCompletionItems(monaco),
-    });
     editor.addAction({
       id: 'format',
       label: 'format label',
@@ -68,7 +59,6 @@ const JsonMonacoEditor = ({ onChange, code, reloadInitialCode }) => {
       },
     });
   };
-
   return (
     <ReactMonacoEditor
       height="600"

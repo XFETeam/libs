@@ -1,12 +1,20 @@
+import qs from 'qs';
+import getLocationQueryString from './get-location-query-string';
+
 export default class ParentWindowEmitter {
-  _isUnderIframe = window.location !== window.parent.location
+  _isUnderIframe = window.location !== window.parent.location;
+
+  constructor() {
+    this.uid = getLocationQueryString();
+  }
 
   postMessage(name, data) {
     if (this._isUnderIframe) {
       window.parent.postMessage({
         namespace: '@xfe-team/json-monaco-editor',
         event: name,
-        code: data
+        code: data,
+        uid: this.uid
       }, '*');
     }
   }
