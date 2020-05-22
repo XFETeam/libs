@@ -7,10 +7,11 @@ import initTrackPageLeave from './track-page-leave';
  * @param {function} createTracker 生成的createTracker函数
  * @param {Object} config 埋点config
  * @param  {Object} thirdPartyAuthStore 第三方授权store
+ * @param {boolean} debug console log debug info
  * @return {*}
  */
-export default function initTracker(createTracker, config, thirdPartyAuthStore) {
-  const { stReportSdk, getDiffRouteTime, report } = getReport(config, thirdPartyAuthStore);
+export default function initTracker(createTracker, config, thirdPartyAuthStore, debug) {
+  const { stReportSdk, getDiffRouteTime, report } = getReport(config, thirdPartyAuthStore, debug);
   const $$tracker = createTracker(report, getDiffRouteTime);
   const trackPageLoad = initTrackPageLoad(stReportSdk, report, getDiffRouteTime);
   const trackPageLeave = initTrackPageLeave(stReportSdk);

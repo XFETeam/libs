@@ -33,7 +33,7 @@ const getDiffRouteTime = StReportSdk.getDiffRouteTime;
  * @param thirdPartyAuthStore
  * @return {{ev_d: any}|{stReportSdk: *, getDiffRouteTime: Function, report: report}}
  */
-export default function getReport(config, thirdPartyAuthStore) {
+export default function getReport(config, thirdPartyAuthStore, debug) {
   const params = {
     projectIdentifier: config.identify /* 项目标识: 如: jx3, 必须填写！！*/,
     eventTags: config.eventTags /* 必须填写！！专题tags，这个数组需要替换为埋点文档上的 ev_tag, 最后一个 js4_xxxx_20181204 往往是专题标识 */,
@@ -43,7 +43,7 @@ export default function getReport(config, thirdPartyAuthStore) {
     }
   };
 
-  const stReportSdk = StReportSdk.getInstance(params, false /* 是否开日志上报的 logger，默认是生产环境不开，平时开；想要关可以直接设为false */);
+  const stReportSdk = StReportSdk.getInstance(params, debug /* 是否开日志上报的 logger，默认是生产环境不开，平时开；想要关可以直接设为false */);
 
   const report = ({
     eventName /* String 事件名 一般是英文 */,
