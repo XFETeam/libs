@@ -1,27 +1,21 @@
 import ReactMonacoEditor from 'react-monaco-editor';
-import React from 'react';
+import React, { useCallback } from 'react';
 import useWindowSize from './use-window-size';
 import ParentWindowEmitter from './api';
 import { useEffect, useState } from 'react';
 
 const JsonMonacoEditor = ({ onChange, options, reloadInitialCode, uid, ...restProps }) => {
+  const [stateProps, setStateProps] = useState(null);
   let editor;
   let api;
 
-  const [stateProps, setStateProps] = useState(null);
-
-  // options = {
-  //   selectOnLineNumbers: true,
-  //   ...options
-  // };
-
-  const handleChange = (newCode) => {
+  const handleChange = useCallback((newCode) => {
     if (api) {
       api.onChange(newCode);
       api.onValidJsonChange(newCode);
     }
     onChange && onChange(newCode);
-  };
+  }, [api]);
 
   useWindowSize({
     onResize() {
@@ -74,7 +68,8 @@ const JsonMonacoEditor = ({ onChange, options, reloadInitialCode, uid, ...restPr
 
   return (
     <ReactMonacoEditor
-      height="700"
+      height="100vh"
+      width="10vw"
       theme="vs"
       language="json"
       {...restProps}

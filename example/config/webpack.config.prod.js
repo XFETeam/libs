@@ -230,6 +230,11 @@ module.exports = {
     ],
   },
   plugins: [
+    new MonacoWebpackPlugin({
+      // available options are documented at https://github.com/Microsoft/monaco-editor-webpack-plugin#options
+      // 'abap' , 'apex' , 'azcli' , 'bat' , 'cameligo' , 'clojure' , 'coffee' , 'cpp' , 'csharp' , 'csp' , 'css' , 'dockerfile' , 'fsharp' , 'go' , 'graphql' , 'handlebars' , 'html' , 'ini' , 'java' , 'javascript' , 'json' , 'kotlin' , 'less' , 'lua' , 'markdown' , 'mips' , 'msdax' , 'mysql' , 'objective-c' , 'pascal' , 'pascaligo' , 'perl' , 'pgsql' , 'php' , 'postiats' , 'powerquery' , 'powershell' , 'pug' , 'python' , 'r' , 'razor' , 'redis' , 'redshift' , 'restructuredtext' , 'ruby' , 'rust' , 'sb' , 'scheme' , 'scss' , 'shell' , 'solidity' , 'sophia' , 'sql' , 'st' , 'swift' , 'tcl' , 'twig' ,
+      languages: ['json', 'xml' , 'yaml', 'abap' , 'apex' , 'azcli' , 'bat' , 'cameligo' , 'clojure' , 'coffee' , 'cpp' , 'csharp' , 'csp' , 'css' , 'dockerfile' , 'fsharp' , 'go' , 'graphql' , 'handlebars' , 'html' , 'ini' , 'java' , 'javascript' , 'json' , 'kotlin' , 'less' , 'lua' , 'markdown' , 'mips' , 'msdax' , 'mysql' , 'objective-c' , 'pascal' , 'pascaligo' , 'perl' , 'pgsql' , 'php' , 'postiats' , 'powerquery' , 'powershell' , 'pug' , 'python' , 'r' , 'razor' , 'redis' , 'redshift' , 'restructuredtext' , 'ruby' , 'rust' , 'sb' , 'scheme' , 'scss' , 'shell' , 'solidity' , 'sophia' , 'sql' , 'st' , 'swift' , 'tcl' , 'twig']
+    }),
     // Makes some environment variables available in index.html.
     // The public URL is available as %PUBLIC_URL% in index.html, e.g.:
     // <link rel="shortcut icon" href="%PUBLIC_URL%/favicon.ico">
@@ -325,10 +330,6 @@ module.exports = {
     // https://github.com/jmblog/how-to-optimize-momentjs-with-webpack
     // You can remove this if you don't use Moment.js:
     new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
-    new MonacoWebpackPlugin({
-      // available options are documented at https://github.com/Microsoft/monaco-editor-webpack-plugin#options
-      languages:  ['abap', 'apex', 'azcli', 'bat', 'cameligo', 'clojure', 'coffee', 'cpp', 'csharp', 'csp', 'css', 'dockerfile', 'fsharp', 'go', 'graphql', 'handlebars', 'html', 'ini', 'java', 'javascript', 'json', 'kotlin', 'less', 'lua', 'markdown', 'mips', 'msdax', 'mysql', 'objective-c', 'pascal', 'pascaligo', 'perl', 'pgsql', 'php', 'postiats', 'powerquery', 'powershell', 'pug', 'python', 'r', 'razor', 'redis', 'redshift', 'restructuredtext', 'ruby', 'rust', 'sb', 'scheme', 'scss', 'shell', 'solidity', 'sophia', 'sql', 'st', 'swift', 'tcl', 'twig', 'typescript', 'vb', 'xml', 'yaml']
-    })
   ],
   // Some libraries import Node modules but don't use them in the browser.
   // Tell Webpack to provide empty mocks for them so importing them works.

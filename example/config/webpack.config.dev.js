@@ -246,7 +246,8 @@ module.exports = {
     new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
     new MonacoWebpackPlugin({
       // available options are documented at https://github.com/Microsoft/monaco-editor-webpack-plugin#options
-      languages: ['json']
+      languages: ['json', 'xml' , 'yaml', 'abap' , 'apex' , 'azcli' , 'bat' , 'cameligo' , 'clojure' , 'coffee' , 'cpp' , 'csharp' , 'csp' , 'css' , 'dockerfile' , 'fsharp' , 'go' , 'graphql' , 'handlebars' , 'html' , 'ini' , 'java' , 'javascript' , 'json' , 'kotlin' , 'less' , 'lua' , 'markdown' , 'mips' , 'msdax' , 'mysql' , 'objective-c' , 'pascal' , 'pascaligo' , 'perl' , 'pgsql' , 'php' , 'postiats' , 'powerquery' , 'powershell' , 'pug' , 'python' , 'r' , 'razor' , 'redis' , 'redshift' , 'restructuredtext' , 'ruby' , 'rust' , 'sb' , 'scheme' , 'scss' , 'shell' , 'solidity' , 'sophia' , 'sql' , 'st' , 'swift' , 'tcl' , 'twig']
+      // languages: ['typescript' , 'vb' , 'xml' , 'yaml']
     })
   ],
   // Some libraries import Node modules but don't use them in the browser.

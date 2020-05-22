@@ -1,33 +1,16 @@
 # @xfe-team/json-monaco-editor
 
-> json 在线编辑工具, 通过 iframe 进行外部通信, 当前工具主要解决内部系统对 monaco-editor 打包缓慢的问题
+> json 在线编辑工具, 通过 iframe 进行外部通信, 当前工具主要解决内部系统对 monaco-editor 打包缓慢的问题, 目前仅支持作为 iframe 使用
 
 [![NPM](https://img.shields.io/npm/v/@xfe-team/json-monaco-editor.svg)](https://www.npmjs.com/package/@xfe-team/json-monaco-editor) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 
-## Demo
+## Iframe 地址
 
-[https://xfeteam.github.io/libs/@xfe-team/json-monaco-editor/index.html](https://xfeteam.github.io/libs/@xfe-team/json-monaco-editor/index.html)
-
-## Install
-
-```bash
-npm install --save @xfe-team/json-monaco-editor
-```
-
-## Usage
+其中 `{VERSION}` 请参考 `README.md ChangeLog` 版本, 并替换, 如: `0.0.1`, `0.1.0` 等
 
 ```jsx
-import React, { Component } from 'react'
-
-import JSONMonacoEditor from '@xfe-team/json-monaco-editor'
-
-class Example extends Component {
-  render () {
-    return (
-      <JSONMonacoEditor />
-    )
-  }
-}
+// react iframe
+<iframe src="//zhcdn01.xoyo.com/xassets/iframe/json-monaco-editor/{VERSION}/index.html" frameBorder={0} allowFullScreen />
 ```
 
 ## API
@@ -52,12 +35,12 @@ const JsonMonacoEditor = ({ onChange, code, reloadInitialCode, options, ...restP
 
 ```jsx
 <ReactMonacoEditor
-  height="700"
+  height="100vh"
+  width="10vw"
   theme="vs"
   language="json"
   {...restProps}
-  value={code}
-  options={options}
+  {...stateProps}
   onChange={handleChange}
   editorDidMount={editorDidMount}
 />
@@ -67,6 +50,9 @@ const JsonMonacoEditor = ({ onChange, code, reloadInitialCode, options, ...restP
 
 ```javascript
 const languages = [
+  'json',
+  'xml',
+  'yaml',
   'abap',
   'apex',
   'azcli',
@@ -124,17 +110,13 @@ const languages = [
   'swift',
   'tcl',
   'twig',
-  'typescript',
-  'vb',
-  'xml',
-  'yaml'
-]
+];
 ```
-
 
 ## Iframe
 
-当组件作为 `iframe` 页面时将发起 postMessage 通知父页面, 目前 postMessage 数据结构共2种, 分别为 `onChange` 和 `onValidJsonChange`:
+当组件作为 `iframe` 页面时将发起 postMessage 通知父页面, 目前 postMessage 分别为 `onChange`, `onValidJsonChange`, `onLoad`,
+其中 `onLoad` 在 iframe 加载完后直接触发一次
 
 ```json
 {
@@ -150,6 +132,13 @@ const languages = [
   "code": "{ \"name\": \"test\" }",
   "uid": "a941816c-7f89-443c-a178-5be32e6835c3"
 }
+
+{
+  "namespace": "@xfe-team/json-monaco-editor",
+  "event": "onLoad",
+  "code": "",
+  "uid": "a941816c-7f89-443c-a178-5be32e6835c3"
+}
 ```
 
 其中:
@@ -161,6 +150,20 @@ const languages = [
 事件:
   onChange: 当任意输入时回调
   onValidChange: 当输入时候且输入的为合法 JSON 时回调
+  onLoad: 当作为 Iframe 页面时页面所有资源加载完毕后回调
+
+
+接受 `window.addEventListener('message')`, 其中 `onLoad` 中 `data` 为当前 `editor` 所需更新的 `props`, 如 `{ value: 'some code' }`, 换句话说, 首次传入代码到 `editor`
+是通过 iframe postMessage 进行的, 所以项管限制请查阅 `postMessage API`
+
+```json
+{
+  "namespace": "@xfe-team/json-monaco-editor",
+  "event": "onLoad",
+  "data": {...},
+  "uid": "a941816c-7f89-443c-a178-5be32e6835c3"
+}
+```
 
 #### 父页面基本用法
 
@@ -207,6 +210,16 @@ const languages = [
 
 ## CI 地址
 https://travis-ci.org/XFETeam/libs
+
+## ChangeLog
+
+## 0.1.0 (2019-05-22)
+
+* feat: 取消直接作为单独组件使用, 仅提供 Iframe 的用途.
+
+## 0.0.1 (2019-05-21)
+
+* init: init commit
 
 ## License
 
