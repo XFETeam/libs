@@ -1,0 +1,20 @@
+{
+  "name": "@xfe-team/standard-scrollbar-styling",
+  "version": "0.0.1",
+  "author": "She Ailun",
+  "description": "标准化美化 PC 端滚动条样式",
+  "main": "style.css",
+  "files": [
+    "style.css"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/XFETeam/libs/tree/standard-scrollbar-styling",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/XFETeam/libs/tree/standard-scrollbar-styling"
+  },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/",
+    "access": "public"
+  }
+}

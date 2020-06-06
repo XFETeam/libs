@@ -37,10 +37,6 @@ branches:
 jobs:
   include:
     - stage: deploy
-      script:
-        - echo "开始执行构建 ..."
-        - npm run build
-        - echo "构建完成"
       deploy:
         provider: npm
         email: "$NPM_EMAIL"

@@ -1,14 +1,15 @@
-# libs
+# @xfe-team/standard-scrollbar-styling
 
-> library 仓库，一个分支作为一个 library 存在。
+> 为了确保在 PC 端能够统一美化滚动条, 故当前库提供了一个标准的组内滚动条样式
 
-## 使用流程
+## 使用
 
-1. 通过 template 分支 checkout 并进行如组件等工具开发
-2. 完成 checkout 后阅读 [TRAVIS.md](./TRAVIS.md) 文件，这里会讲述目前持续集成的基本部署流程
-3. 开始进行开发，完成开发后阅读 `CHANGELOG_FORMAT.md`
-4. 使用 webstorm 等工具全局替换如 `<%= projectName %>` 等字段
-5. 最终决定通过 npm 上线时， 更新 `package.json` 中 `version` 版本， 并以 `release:` 作为 `commit message` 进行提交 
+```less
+// xxx.less
+@import "node_modules/@xfe-team/standard-scrollbar-styling/style.css";
+...
+
+```
 
 ## TRAVIS CI 地址
 
