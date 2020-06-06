@@ -14,9 +14,6 @@ before_install:
       exit
     fi
 
-script:
-  - yarn start
-
 branches:
   only:
     - gh-pages
