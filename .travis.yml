@@ -3,14 +3,6 @@
 # 使用 nodejs
 language: node_js
 
-# 版本为 8
-node_js:
-  - "9"
-
-# 使用 yarn 而不是 npm (按照实际情况调整)
-install: yarn
-cache: yarn
-
 git:
   depth: 1
 
