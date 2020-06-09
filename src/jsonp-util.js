@@ -20,7 +20,7 @@ function jsonp(url, params = {}, isMockOn) {
   }
   try {
     // 使用 __ts__ 确保请求不会被各种原因缓存
-    params = Object.assign({}, params, { __ts__: +new Date() });
+    params = Object.assign({}, { __ts__: +new Date() }, params);
     const promise = jsonpPromise(url + '?' + qs.stringify(params), {
       // 明确命名空间
       prefix: '__xfe',
