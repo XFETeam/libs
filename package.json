@@ -12,7 +12,7 @@
     "test:cover": "cross-env NODE_ENV=test nyc mocha --require babel-register --colors test/*.js",
     "release": "npm run build && release-it patch",
     "release:dry-run": "release-it minor --dry-run",
-    "deploy": "npm run build && npm run gh-page",
+    "deploy": "npm run build",
     "docs": "rimraf docs && jsdoc -c jsdoc.json",
     "gh-page": "gh-pages-clean && gh-pages -d docs/ --remove=@xfe-team/utils/ -r https://$GH_TOKEN@github.com/XFETeam/libs.git"
   },
