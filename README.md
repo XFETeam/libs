@@ -7,8 +7,8 @@
 ```html
 <head>
  ...
-   <script src="//zhcdn01.xoyo.com/xassets/lib/daily-app-auth/{VERSION}/daily-app-auth.js" crossOrigin="anonymous" />
-   <script src="//zhcdn01.xoyo.com/xassets/lib/daily-app-auth/{VERSION}/get-daily-account-info.js" crossOrigin="anonymous" />
+   <script src="//zhcdn01.xoyo.com/xassets/lib/daily-app-auth/{VERSION}/daily-app-auth.js" crossOrigin="anonymous"></script>
+   <script src="//zhcdn01.xoyo.com/xassets/lib/daily-app-auth/{VERSION}/get-daily-account-info.js" crossOrigin="anonymous"></script>
  ...
 </head>
 ```
