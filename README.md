@@ -27,7 +27,7 @@ const JsonMonacoEditor = ({ onChange, code, reloadInitialCode, options, ...restP
 | reloadInitialCode  | 重置代码, 当触发快捷键 \(重置初始化代码\) 时回调 | () => void      | -   | 否   |
 | height  | 高度 | number \| string | 700   | 否   |
 | theme  | 主题 | 'vs'\|'vs-dark' | 'vs'   | 否   |
-| language  | 语言 | 'json' | 'vs'   | 否   |
+| language  | 语言 | string | 'json'   | 否   |
 
 其中, `restProps` 将代理给 [react-monaco-editor](https://github.com/react-monaco-editor/react-monaco-editor) 组件.
 
