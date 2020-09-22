@@ -69,7 +69,7 @@ const JsonMonacoEditor = ({ onChange, options, reloadInitialCode, uid, ...restPr
   return (
     <ReactMonacoEditor
       height="100vh"
-      width="10vw"
+      width="100vw"
       theme="vs"
       language="json"
       {...restProps}
