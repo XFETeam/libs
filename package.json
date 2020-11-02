@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "author": "liyihong",
   "description": "西山居多端通用登录",
-  "main": "lib/universal-auth.js",
+  "main": "lib/@xfe-team/universal-auth.js",
   "scripts": {
     "start": "webpack --progress --colors --watch --env dev",
     "build": "rimraf lib && webpack --env development && webpack --env production && git add lib",

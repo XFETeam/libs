@@ -1,4 +1,4 @@
-# universal-auth
+# @xfe-team/universal-auth
 
 > 西山居多端通用登录
 
@@ -10,7 +10,7 @@
 
 ## 基本用法
 ```javascript
-import {getAuthInfoByAppEnv, getDailyAuth,getQQWeixinAuth, getXoyoAuth, GeneralTools } from 'universal-auth'
+import {getAuthInfoByAppEnv, getDailyAuth,getQQWeixinAuth, getXoyoAuth, GeneralTools } from '@xfe-team/universal-auth'
 
 /**
 * 自动根据App环境进行登录
