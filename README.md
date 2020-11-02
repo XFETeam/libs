@@ -10,28 +10,29 @@
 
 ## 基本用法
 ```javascript
-import {getAuthInfoByAppEnv, getDailyAuth,getQQWeixinAuth, getXoyoAuth, GeneralTools } from '@xfe-team/universal-auth'
+import {getAuthInfoByAppEnv, getDailyAuth, getQQWeixinAuth, getXoyoAuth, GeneralTools} from '@xfe-team/universal-auth'
 
 /**
-* 自动根据App环境进行登录
-* @param daily daily端
-* @param limitOnlyHasJx3RoleAccessInDaily 是否限制只有存在剑网3角色的用户登录
-* @param weixinQQ 微信QQ端
-* @param xoyo 使用金山通行证登录
-* @param debug 是否进行登录信息提示
-* @param disable 禁止登录模块
-* @returns {Promise<GlobalAuthData>}
-* @type {GlobalAuthData}
-*/
+ * 自动根据App环境进行登录
+ * @param daily daily端
+ * @param limitOnlyHasJx3RoleAccessInDaily 是否限制只有存在剑网3角色的用户登录
+ * @param weixinQQ 微信QQ端
+ * @param xoyo 使用金山通行证登录
+ * @param debug 是否进行登录信息提示
+ * @param disable 禁止登录模块
+ * @returns {Promise<GlobalAuthData>}
+ * @type {GlobalAuthData}
+ */
 const data = await getAuthInfoByAppEnv({});
-if(data.THIRD_PARTY_AUTH) {
-	this.setState({
-      userName: data.THIRD_PARTY_AUTH.data.uid || data.THIRD_PARTY_AUTH.data.account
-	})
-}else{
-	this.setState({
-      userName: data.XOYO_AUTH.data.account
-	})
+if (data.THIRD_PARTY_AUTH) {
+  this.setState({
+    userName: data.THIRD_PARTY_AUTH.data.uid || data.THIRD_PARTY_AUTH.data.account
+  });
+} 
+else {
+  this.setState({
+    userName: data.XOYO_AUTH.data.account
+  });
 }
 
 ```
@@ -96,6 +97,7 @@ GeneralTools.logout();
 - Improve - when you made an existing thing better.
 - Update - when you refresh something, but don’t necessarily make it better.
 - Upgrade - when upgrading the version of a dependency.
+- Release - publish package.
 - Initial/Beta release of … - when releasing a brand-new feature.
 
 ## 0.0.1 (2020-10-28)
