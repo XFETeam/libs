@@ -1,6 +1,6 @@
 {
   "name": "@xfe-team/universal-auth",
-  "version": "0.0.1",
+  "version": "0.0.0",
   "author": "liyihong",
   "description": "西山居多端通用登录",
   "main": "lib/@xfe-team/universal-auth.js",

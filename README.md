@@ -100,6 +100,9 @@ GeneralTools.logout();
 - Release - publish package.
 - Initial/Beta release of … - when releasing a brand-new feature.
 
+## 0.0.2 (2020-11-02)
+- Fix: 修复 check-is-master-env 中补充输入的 "isMaster" 参数导致页面正常调用时 "isMaster" undefined报错的问题
+
 ## 0.0.1 (2020-10-28)
 - init: init commit. 整合 mobile-react-v4.1 版本中的三端登录的功能模块.
 
