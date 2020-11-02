@@ -99,7 +99,7 @@ GeneralTools.logout();
 - Initial/Beta release of … - when releasing a brand-new feature.
 
 ## 0.0.1 (2020-10-28)
-- add: 整合mobile-recat-v4.1版本中的三端登录的功能模块.
+- init: init commit. 整合mobile-recat-v4.1版本中的三端登录的功能模块.
 
 
 ## 作者
