@@ -5,7 +5,7 @@ language: node_js
 
 # 版本为 8
 node_js:
-  - "9"
+  - "10"
 
 # 使用 yarn 而不是 npm (按照实际情况调整)
 install: yarn
@@ -27,20 +27,19 @@ script:
 
 branches:
   only:
-    - gh-pages
     - /.*/
   except:
-    - master
-    - template
-    - - /^test-.*$/
+  #    - master
+  - gh-pages
+  - /^test-.*$/
 
 jobs:
   include:
     - stage: deploy
       script:
-        - echo "开始执行构建 ..."
-        - npm run build
-        - echo "构建完成"
+        - echo "开始执行部署 ..."
+        - npm run deploy
+        - echo "部署完成"
       deploy:
         provider: npm
         email: "$NPM_EMAIL"
