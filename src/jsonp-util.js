@@ -20,7 +20,7 @@ function jsonp(url, params = {}, isMockOn) {
   }
   try {
     // 使用 __ts__ 确保请求不会被各种原因缓存
-    params = Object.assign({}, { __ts__: +new Date() }, params);
+    params = Object.assign({}, { __ts__: undefined }, params);
     const promise = jsonpPromise(url + '?' + qs.stringify(params), {
       // 明确命名空间
       prefix: '__xfe',
@@ -29,7 +29,11 @@ function jsonp(url, params = {}, isMockOn) {
     }).promise;
     return promise
       .then(response => {
-        return new ServiceResponse({ ...response });
+        if (ServiceResponse.isApiResponseShape(response)) {
+          // noinspection JSCheckFunctionSignatures
+          return new ServiceResponse({ ...response });
+        }
+        return response;
       })
       .catch(error => {
         if (ServiceResponse.isApiResponseShape(error)) {
