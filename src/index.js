@@ -1,89 +1,67 @@
-/* eslint-disable react/prop-types */
-import React from 'react';
-import { string, oneOfType, number } from 'prop-types';
-
-class Component extends React.PureComponent {
-  constructor(props) {
-    super(props);
-    this.state = {
-      isScriptReady: !!window.loadlive2d
+(function () {
+    const xoyoAuth = (xoyo) => {
+        if (xoyo) {
+            return `<script>${require('!!raw-loader!./xoyo').default}</script>`
+        } else {
+            return `<script>${require('!!raw-loader!./invalid-redierct').default}</script>`
+        }
     };
-    this.rootId = new Date().getTime() + Math.round(Math.random() * 10e10);
-  }
 
-  /**
-   * 加载脚本
-   * @param ｛string｝src - 加载脚本地址
-   * @returns {Promise<void>}
-   */
-  loadScript(src) {
-    return new Promise((resolve, reject) => {
-      const script = document.createElement('script');
-      script.onload = resolve;
-      script.onerror = resolve;
-      script.src = src;
-      document.head.appendChild(script);
-    });
-  }
+    const dailyAuth = (daily, limitOnlyHasJx3RoleAccessInDaily) => {
+        if (daily) {
+            return `
+                ${limitOnlyHasJx3RoleAccessInDaily?'<script>window.LIMIT_ONLY_HAS_JX3_ROLE_ACCESS_IN_DAILY = true;</script>':''}
+                <script>${require('!!raw-loader!./jianghudaily/auth-with-token').default}</script>
+                <script>${require('!!raw-loader!./jianghudaily/get-account-info').default}</script>            
+            `
+        }
+        return '';
+    };
 
-  /**
-   * 更新 state
-   * @param ｛object｝nextState - 下一个状态
-   * @returns {Promise<object>}
-   */
-  updateState(nextState) {
-    if (!this.isUnmount) {
-      return new Promise(resolve => {
-        this.setState(nextState, () => resolve(this.state));
-      });
-    }
-    return Promise.resolve(this.state);
-  }
+    const weixinQQAuth = (weixinQQ) => {
+        if (weixinQQ) {
+            return `
+                <script>${require('!!raw-loader!./qq-weixin-auth/get-account-info').default}</script>
+                <script>${require('!!raw-loader!./qq-weixin-auth/get-auth-url').default}</script>            
+            `
+        }
+        return '';
+    };
 
-  async componentDidMount() {
-    const { isScriptReady } = this.state;
-    const { live2dScriptUrl, modelJsonUrl } = this.props;
-    if (!isScriptReady) {
-      await this.loadScript(live2dScriptUrl);
-      await this.updateState({ isScriptReady: true });
-    }
-    window.loadlive2d(this.rootId, modelJsonUrl);
-  }
+    const debugInfo = (debug) => {
+        if (debug) {
+            return `
+                <script>
+                    setTimeout(function() {
+                        alert('THIRD_PARTY_AUTH\\n' + JSON.stringify(window.THIRD_PARTY_AUTH)); alert('XOYO_AUTH\\n' + JSON.stringify(window.XOYO_AUTH));
+                    }, 800)
+                </script>
+            `
+        }
+        return '';
+    };
 
-  componentWillUnmount() {
-    this.isUnmount = true;
-  }
 
-  render() {
-    const { live2dScriptUrl, modelJsonUrl, ...restProps } = this.props;
-    return <canvas {...restProps} id={this.rootId} />;
-  }
-}
+    const defaultConfig = {
+        daily: true,
+        limitOnlyHasJx3RoleAccessInDaily: false,
+        weixinQQ: true,
+        xoyo: true,
+        debug: false
+    };
 
-Component.defaultProps = {
-  modelJsonUrl: '//zhcdn01.xoyo.com/xassets/lib/live2d/unknown/example/model.json',
-  live2dScriptUrl: '//zhcdn01.xoyo.com/xassets/lib/live2d/unknown/live2d.min.js'
-};
+    window.__XFE_UNIVERSAL_AUTH_CONFIG__ = {...defaultConfig, ...window.__XFE_UNIVERSAL_AUTH_CONFIG__ || {}};
 
-Component.propsTypes = {
-  /**
-   * modelJson 看板娘配置地址
-   * 默认：‘//zhcdn01.xoyo.com/xassets/lib/live2d/unknown/example/model.json‘ （用于 demo）
-   */
-  modelJsonUrl: string,
-  /**
-   * live2d 脚本地址
-   * 默认：'//zhcdn01.xoyo.com/xassets/lib/live2d/unknown/live2d.min.js'
-   */
-  live2dScriptUrl: string,
-  /**
-   * canvas 宽度
-   */
-  width: oneOfType([number, string]).isRequired,
-  /**
-   * canvas 高度
-   */
-  height: oneOfType([number, string]).isRequired
-};
+    const {xoyo, daily, weixinQQ, debug} = window.__XFE_UNIVERSAL_AUTH_CONFIG__;
 
-export default Component;
+    const writelnContent = `
+        <script>${require('!!raw-loader!./tools').default}</script>
+        <script>${require('!!raw-loader!./global-config').default}</script>
+        ${dailyAuth(daily)}
+        ${weixinQQAuth(weixinQQ)}
+        ${xoyoAuth(xoyo)}
+        ${debugInfo(debug)}
+    `;
+
+    document.writeln(writelnContent);
+})();
